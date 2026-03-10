@@ -1,14 +1,8 @@
 {
+	
 	"folders": [
-		{
-			"path": "."
-		},
-		{
-			"path": "arduino-program"
-		},
-		{
-			"path": "web-app"
-		}
+		{ "path": "web-app" },
+		{ "path": "arduino-program" }
 	],
 	"settings": {}
 }
