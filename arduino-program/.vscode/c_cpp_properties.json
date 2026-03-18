@@ -8,29 +8,31 @@
         {
             "name": "PlatformIO",
             "includePath": [
-                "C:/Users/chris/OneDrive/Desktop/arduino_test/arduino-project/include",
-                "C:/Users/chris/OneDrive/Desktop/arduino_test/arduino-project/src",
-                "C:/Users/chris/.platformio/packages/framework-arduino-avr/cores/arduino",
-                "C:/Users/chris/.platformio/packages/framework-arduino-avr/variants/standard",
-                "C:/Users/chris/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
-                "C:/Users/chris/.platformio/packages/framework-arduino-avr/libraries/HID/src",
-                "C:/Users/chris/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
-                "C:/Users/chris/.platformio/packages/framework-arduino-avr/libraries/SoftwareSerial/src",
-                "C:/Users/chris/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
+                "C:/Users/clocngyn/Documents/delivery-robot/arduino-program/include",
+                "C:/Users/clocngyn/Documents/delivery-robot/arduino-program/src",
+                "C:/Users/clocngyn/Documents/delivery-robot/arduino-program/.pio/libdeps/uno/HCSR04 ultrasonic sensor/src",
+                "C:/Users/clocngyn/.platformio/packages/framework-arduino-avr/cores/arduino",
+                "C:/Users/clocngyn/.platformio/packages/framework-arduino-avr/variants/standard",
+                "C:/Users/clocngyn/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
+                "C:/Users/clocngyn/.platformio/packages/framework-arduino-avr/libraries/HID/src",
+                "C:/Users/clocngyn/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
+                "C:/Users/clocngyn/.platformio/packages/framework-arduino-avr/libraries/SoftwareSerial/src",
+                "C:/Users/clocngyn/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
                 ""
             ],
             "browse": {
                 "limitSymbolsToIncludedHeaders": true,
                 "path": [
-                    "C:/Users/chris/OneDrive/Desktop/arduino_test/arduino-project/include",
-                    "C:/Users/chris/OneDrive/Desktop/arduino_test/arduino-project/src",
-                    "C:/Users/chris/.platformio/packages/framework-arduino-avr/cores/arduino",
-                    "C:/Users/chris/.platformio/packages/framework-arduino-avr/variants/standard",
-                    "C:/Users/chris/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
-                    "C:/Users/chris/.platformio/packages/framework-arduino-avr/libraries/HID/src",
-                    "C:/Users/chris/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
-                    "C:/Users/chris/.platformio/packages/framework-arduino-avr/libraries/SoftwareSerial/src",
-                    "C:/Users/chris/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
+                    "C:/Users/clocngyn/Documents/delivery-robot/arduino-program/include",
+                    "C:/Users/clocngyn/Documents/delivery-robot/arduino-program/src",
+                    "C:/Users/clocngyn/Documents/delivery-robot/arduino-program/.pio/libdeps/uno/HCSR04 ultrasonic sensor/src",
+                    "C:/Users/clocngyn/.platformio/packages/framework-arduino-avr/cores/arduino",
+                    "C:/Users/clocngyn/.platformio/packages/framework-arduino-avr/variants/standard",
+                    "C:/Users/clocngyn/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
+                    "C:/Users/clocngyn/.platformio/packages/framework-arduino-avr/libraries/HID/src",
+                    "C:/Users/clocngyn/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
+                    "C:/Users/clocngyn/.platformio/packages/framework-arduino-avr/libraries/SoftwareSerial/src",
+                    "C:/Users/clocngyn/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
                     ""
                 ]
             },
@@ -45,7 +47,7 @@
             ],
             "cStandard": "gnu11",
             "cppStandard": "gnu++11",
-            "compilerPath": "C:/Users/chris/.platformio/packages/toolchain-atmelavr/bin/avr-gcc.exe",
+            "compilerPath": "C:/Users/clocngyn/.platformio/packages/toolchain-atmelavr/bin/avr-gcc.exe",
             "compilerArgs": [
                 "-mmcu=atmega328p",
                 ""

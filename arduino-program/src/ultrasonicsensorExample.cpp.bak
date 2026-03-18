@@ -1,0 +1,43 @@
+#include <Arduino.h>
+#include <HCSR04.h>
+
+// put function declarations here: 
+int myFunction(int, int);
+void sense();
+
+int led1 = 12;         // the PWM pin the LED is attached to
+int led2 = 2;
+int brightness = 250;  // how bright the LED is
+int fadeAmount = 5;  // how many points to fade the LED by
+HCSR04 hc(7, 5);
+void setup() {
+  // put your setup code here, to run once:
+  //int result = myFunction(2, 3);
+  pinMode(led1, OUTPUT); // setup light pins
+  pinMode(led2, OUTPUT);
+  Serial.begin(9600); 
+  Serial.print(69);
+}
+
+
+void loop() {
+  sense();      // call our sensor
+  delay(60);    // we suggest to use over 60ms measurement cycle, in order to prevent trigger signal to the echo signal.
+}
+
+// put function definitions here:
+int myFunction(int x, int y) {
+  return x + y;
+}
+
+void sense() { // checks distance from ultrasonic sensor turns each light on and off
+  float distance = hc.dist(); //return current distance (cm) in serial
+  if (distance <= 10.0) {
+    analogWrite(led1, 0);
+    analogWrite(led2, 255);
+  } else {
+    analogWrite(led2, 0);
+    analogWrite(led1, 255);
+
+  }
+}
