@@ -6,7 +6,7 @@
 #include <ArduinoJson.h>
 
 
-// set up server for the esp32, port80, name it ws
+// set up server for the esp32, use port 80, name it ws
 AsyncWebServer server(80);
 AsyncWebSocket webSocket("/ws");
 
@@ -14,9 +14,11 @@ AsyncWebSocket webSocket("/ws");
 // put function declarations here:
 int myFunction(int, int);
 
+// WebSocket listener function
 void onWebSocketEvent(AsyncWebSocket *server, AsyncWebSocketClient *client, AwsEventType type,
                void *arg, uint8_t *data, size_t len) {
-  if (type == WS_EVT_CONNECT) {
+                
+  if (type == WS_EVT_CONNECT) {     // on connect
     Serial.println("Browser connected to WebSocket!"); 
     client->text("{\"status\":\"ok\"}"); // test json message
   }
