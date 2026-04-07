@@ -1,11 +1,8 @@
 #include "robot.h"
 
 
-
-
 // put function declarations here:
 int myFunction(int, int);
-
 
 
 void setup() {
@@ -26,7 +23,7 @@ void setup() {
   }
   webSocketInit();
   
-
+  Serial.println("Setup done");
 }
 
 

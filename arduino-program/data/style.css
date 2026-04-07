@@ -41,6 +41,16 @@
     border: none;
     border-radius: 15px; 
     box-shadow: 0 5px #333333; 
+    font-family: Arial, sans-serif; 
+    /*  this chunk is to fix mobile stuff like highlighting text
+        and double tap delay */
+    -webkit-user-select: none;  
+    -ms-user-select: none;      
+    user-select: none;          
+    touch-action: none;
+    -webkit-tap-highlight-color: transparent;
+    
+    
 }
 .button-space {
     width: 80px; 
