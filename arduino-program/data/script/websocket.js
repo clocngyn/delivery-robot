@@ -1,6 +1,6 @@
 // ws://127.0.0.1/    <-- local host for testing
 const ws = "ws://${window.location.hostname}/ws";   // opens the websocket using the ip of the html file
-let websocket;                // which is coming from the esp32
+let websocket;                                      // which is coming from the esp32
 
 
 window.addEventListener("load", onLoad)
@@ -39,4 +39,27 @@ function onMessage(message) {
                                             // since we are using multiple sensors.
 
     console.log(data.status);
+}
+
+// binds the dpad to websocket
+function initControls() {
+    const directions = { // dictionary of directions key : value, ex. indexing up will return forward
+        'up': 'FORWARD',
+        'down': 'BACKWARD',
+        'left': 'LEFT',
+        'right': 'RIGHT'
+    };
+
+    // for every element in directions, for every id (up, down, etc), find that button and set the functionality
+    Object.keys(directions).forEach(id => {
+        const button = document.getElementById(id);
+        const startMove = () => websocket.send(directions[id]);
+        const stopMove = () => websocket.send('STOP');
+
+        button.onmousedown = startMove;
+        button.ontouchstart = startMove; 
+
+        button.onmouseup = stopMove;
+        button.ontouchend = stopMove;
+    });
 }
