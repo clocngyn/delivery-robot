@@ -1,12 +1,14 @@
 #include "robot.h"
+#include "motordriver.h"
 
-
-// put function declarations here:
-int myFunction(int, int);
+int driveSpeed = 0;
+String robotDriveState = "STOP";
+String testString = "";
 
 
 void setup() {
   Serial.begin(115200);                       // esp32 can read at 115200 bps
+  initMotorDriver();
   WiFi.begin("iPhone", "tset2sdkt5q4");       // (wifi name, password)
   while (WiFi.status() != WL_CONNECTED) {     // yield until wifi connected
     delay(500);
@@ -29,12 +31,30 @@ void setup() {
 
 void loop() {
   webSocket.cleanupClients();     // cleans up disconnected clients
+
+  /*if sensor too cllose, set speed lower
+      temp codeee
+  */ 
+  driveSpeed = 255;
+  static String lastDriveState; // records the last state
+
+  // since we recorded the last drive state,
+  // this block will only run when the state changes instead of every tick
+  if (robotDriveState != lastDriveState) {
+    Serial.println(robotDriveState);
+    if (robotDriveState != "STOP") {
+      drive(robotDriveState);
+    } else {
+      stop();
+    }
+    lastDriveState = robotDriveState; //update state
+  }
+  //Serial.println(testString);
+  delay(100);
+
+  
 }
 
 
 
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
-}
 

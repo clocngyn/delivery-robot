@@ -1,8 +1,8 @@
 // this header file package acts as a compact way to import all required dependencies at once
 // variables and functions declared in this file can also be accessed across different files 
 // as long as this file is included
-#ifndef robot
-#define robot
+#ifndef ROBOT_H
+#define ROBOT_H
 
 // dependencies
 #include <Arduino.h>
@@ -17,8 +17,13 @@
 extern AsyncWebServer server;
 extern AsyncWebSocket webSocket;
 
-extern String robotDriveState;  // ex. "FORWARD", "STOP", these will be modified by websocket.cpp
-                                // and main will act based on the current state
+extern String   robotDriveState;    // ex. "FORWARD", "STOP", these will be modified by websocket.cpp
+                                    // and main will act based on the current state
+extern bool     canDrive;    
+extern int      driveSpeed;       
+
+extern String testString;
+
 
 // function prototypes
 void webSocketInit();

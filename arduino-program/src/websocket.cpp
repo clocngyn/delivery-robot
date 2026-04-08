@@ -18,10 +18,10 @@ void onWebSocketEvent(AsyncWebSocket *server, AsyncWebSocketClient *client, AwsE
     for (size_t i = 0; i < len; i++) {  // assembles the data back into a string
         command += (char)data[i];
     }
-
-    // print 
-    Serial.print("D-Pad Signal: ");
-    Serial.println(command); 
+    command.trim(); // clean the string just in case
+    robotDriveState = command;
+    //Serial.println("raw data: "); test
+    //Serial.print(command);
     }
   
 }
