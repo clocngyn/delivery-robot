@@ -7,9 +7,9 @@ function Home() {
       <header className = "Intro">
        <h1>Food Delivery Robot</h1>
        <Link to= "/"> Home </Link>
-       <Link to= "/Designteam"> Designteam </Link>
-       <Link to= "/Hardwareteam"> Hardwareteam </Link>
-       <Link to= "/Softwareteam"> Softwareteam </Link>
+       <Link to= "/Design Team"> Designteam </Link>
+       <Link to= "/Hardware Team"> Hardwareteam </Link>
+       <Link to= "/Software Team"> Softwareteam </Link>
        <p>Project created by Pi Class</p>
       </header>
       
