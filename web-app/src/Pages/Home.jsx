@@ -1,15 +1,9 @@
-import { useState } from 'react'
-import { Button } from "../Components/Button"
-import { StoreItem } from "../Components/StoreItem"
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
-function App() {
+function Home() {
 
   return (
     <div className = "Home">
-      {/* Intro */}
       <header className = "Intro">
        <h1>Food Delivery Robot</h1>
        <p>Project created by Pi Class</p>
@@ -27,4 +21,4 @@ function App() {
   )
 }
 
-export default App
+export default Home
