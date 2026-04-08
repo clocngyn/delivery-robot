@@ -12,7 +12,7 @@ const int motorA_pwm = 23;
 
 // motor B controls both left wheels
 const int motorB_in1 = 14;
-const int motorB_in2 = 12;
+const int motorB_in2 = 25;
 const int motorB_pwm = 13;
 
 const int stbyPin    = 33; 
