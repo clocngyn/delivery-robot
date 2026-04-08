@@ -1,11 +1,15 @@
 import '../App.css'
-
+import { Link } from "react-router-dom"
 function Home() {
 
   return (
     <div className = "Home">
       <header className = "Intro">
        <h1>Food Delivery Robot</h1>
+       <Link to= "/"> Home </Link>
+       <Link to= "/Designteam"> Designteam </Link>
+       <Link to= "/Hardwareteam"> Hardwareteam </Link>
+       <Link to= "/Softwareteam"> Softwareteam </Link>
        <p>Project created by Pi Class</p>
       </header>
       
