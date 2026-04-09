@@ -40,3 +40,52 @@
 .read-the-docs {
   color: #888;
 }
+
+/* Home page */
+.Home .Intro {
+  margin-bottom: 2rem;
+}
+
+.Home .Intro h1 {
+  margin-bottom: 0.75rem;
+}
+
+.Home-credit {
+  max-width: 36rem;
+  margin: 0 auto 1.25rem;
+  line-height: 1.5;
+  color: color-mix(in srgb, currentColor 85%, transparent);
+  font-size: 1rem;
+}
+
+.Home-robot-img {
+  display: block;
+  max-width: min(100%, 320px);
+  height: auto;
+  margin: 0 auto;
+  border-radius: 12px;
+}
+
+.Home .About {
+  text-align: left;
+  max-width: 40rem;
+  margin: 0 auto;
+}
+
+.Home .About p {
+  line-height: 1.6;
+  margin: 0 0 1rem;
+}
+
+.Home-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  margin-top: 1.5rem !important;
+  padding-top: 1rem;
+  border-top: 1px solid color-mix(in srgb, currentColor 15%, transparent);
+}
+
+.Home-links a {
+  font-weight: 500;
+}

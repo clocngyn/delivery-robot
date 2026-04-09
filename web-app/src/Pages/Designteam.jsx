@@ -6,5 +6,4 @@ export function Desginteam() {
     )
    
 }
-
 export default Desginteam
