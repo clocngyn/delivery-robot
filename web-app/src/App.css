@@ -94,3 +94,37 @@
   margin: 0 0 1rem;
 }
 
+.team-members-list {
+  list-style: none;
+  margin-top: 0.5rem;
+  padding-left: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.75rem;
+}
+
+.team-members-list li {
+  margin-bottom: 0;
+  border: 1px solid color-mix(in srgb, currentColor 15%, transparent);
+  border-radius: 10px;
+  padding: 0.7rem 0.8rem;
+  background: color-mix(in srgb, currentColor 4%, transparent);
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.team-member-lead {
+  border-color: #646cff !important;
+  background: color-mix(in srgb, #646cff 12%, transparent) !important;
+}
+
+.member-name {
+  font-weight: 600;
+}
+
+.member-role {
+  font-size: 0.88rem;
+  color: color-mix(in srgb, currentColor 72%, transparent);
+}
+
