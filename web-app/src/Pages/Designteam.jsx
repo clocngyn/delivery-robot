@@ -6,28 +6,33 @@ function Designteam() {
       <header className="Intro">
         <h1>Design Team</h1>
       </header>
-      <section className="About">
-        <p>
-          The design team defines the robot body layout, payload compartment, and overall look so
-          the delivery platform is practical, durable, and easy to use.
-        </p>
+      <div className="Team-grid">
+        <section className="About">
+          <h2>Overview</h2>
+          <p>
+            The design team defines the robot body layout, payload compartment, and overall look so
+            the delivery platform is practical, durable, and easy to use.
+          </p>
+        </section>
+      </div>
 
-        <h2>Team Members</h2>
-        <ul className="team-members-list">
-          <li className="team-member-lead">
-            <span className="member-name">Member 1</span>
-            <span className="member-role">Team Lead</span>
-          </li>
-          <li>
-            <span className="member-name">Member 2</span>
-          </li>
-          <li>
-            <span className="member-name">Member 3</span>
-          </li>
-          <li>
-            <span className="member-name">Member 4</span>
-          </li>
-        </ul>
+      <section className="Design-images">
+        <h2>Design images</h2>
+        <p className="Design-images-text">
+          Container that holds the food + suspension design screenshots.
+        </p>
+        <div className="Design-image-grid">
+          <img
+            className="Design-image"
+            src={`${import.meta.env.BASE_URL}design-container.png`}
+            alt="Container design that holds the food"
+          />
+          <img
+            className="Design-image"
+            src={`${import.meta.env.BASE_URL}design-suspension.png`}
+            alt="Suspension design for the robot"
+          />
+        </div>
       </section>
     </div>
   )
