@@ -23,7 +23,12 @@ function About() {
                 <span className="member-role">Team Lead</span>
               </div>
             </li>
-            <li><span className="member-name">Khaku Purev-Erdene</span></li>
+            <li className="member-with-pic">
+              <img src={`${import.meta.env.BASE_URL}khaku.png`} alt="Khaku Purev-Erdene" className="member-pic" />
+              <div className="member-info">
+                <span className="member-name">Khaku Purev-Erdene</span>
+              </div>
+            </li>
             <li><span className="member-name">Alia Shaqur</span></li>
             <li><span className="member-name">Danijela Cavic</span></li>
             <li className="member-with-pic">
