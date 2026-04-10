@@ -75,9 +75,12 @@ function About() {
         <section className="info-card">
           <h3>Software Team</h3>
           <ul className="team-members-list">
-            <li className="team-member-lead">
-              <span className="member-name">Chris Nguyen</span>
-              <span className="member-role">Team Lead</span>
+            <li className="team-member-lead member-with-pic">
+              <img src={`${import.meta.env.BASE_URL}chris.png`} alt="Chris Nguyen" className="member-pic" />
+              <div className="member-info">
+                <span className="member-name">Chris Nguyen</span>
+                <span className="member-role">Team Lead</span>
+              </div>
             </li>
             <li className="member-with-pic">
               <img src={`${import.meta.env.BASE_URL}jaideep.png`} alt="Jaideep Deevi" className="member-pic" />
