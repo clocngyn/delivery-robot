@@ -31,10 +31,6 @@ void drive(char direction) {
         return;
     }
 
-    analogWrite(motor1A_pwm, driveSpeed);
-    analogWrite(motor1B_pwm, driveSpeed);
-    analogWrite(motor2A_pwm, driveSpeed);
-    analogWrite(motor2B_pwm, driveSpeed);
     if (direction == CMD_FORWARD) {
         digitalWrite(motor1A_in1, HIGH);
         digitalWrite(motor1A_in2, LOW);
@@ -74,12 +70,9 @@ void drive(char direction) {
     }
 }
 
+// stop function
 void stop() {
     //testString = "STOP";
-    analogWrite(motor1A_pwm, 0);
-    analogWrite(motor1B_pwm, 0);
-    analogWrite(motor2A_pwm, 0);
-    analogWrite(motor2B_pwm, 0);
     digitalWrite(motor1A_in1, LOW);
     digitalWrite(motor1A_in2, LOW);
     digitalWrite(motor1B_in1, LOW);
@@ -88,6 +81,14 @@ void stop() {
     digitalWrite(motor2A_in2, LOW);
     digitalWrite(motor2B_in1, LOW);
     digitalWrite(motor2B_in2, LOW);
+}
+
+void setSpeed(int speedValue) {
+    speedValue = constrain(speedValue, 0, 255); // clamp 
+    analogWrite(motor1A_pwm, speedValue);
+    analogWrite(motor1B_pwm, speedValue);
+    analogWrite(motor2A_pwm, speedValue);
+    analogWrite(motor2B_pwm, speedValue);
 }
 
 

@@ -14,12 +14,18 @@ void setup() {
 
 void loop() {
  if (Serial2.available() > 0) {
-    char incomingByte = Serial2.read();
+    char header = Serial2.read(); // looks at first byte of the line
     
-    // listens for drive commands
-    if (strchr("FBRLS", incomingByte)) {
-      drive(incomingByte);
+    // listens for drive commands which are 1 char
+    if (strchr("FBRLS", header)) { // strchr() returns as truthy value if the 2nd param is in the string
+      drive(header);
+    // listens for speed changes
+    } else if (header == 'S') {
+        int Speed = Serial2.parseInt();
+        setSpeed(Speed);
     }
+    
+    
   }
 }
 

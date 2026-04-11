@@ -28,8 +28,8 @@ const int stbyPin    = 33;
 
 // prototypes
 void initMotorDriver();
-void drive(char direction) ;                  // receives from websocket
-void move(int leftSpeed, int rightSpeed);       //helper function
+void drive(char direction);                  // receives from websocket
+void setSpeed(int speedValue);
 void stop();                    
 
 #endif
