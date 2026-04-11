@@ -1,19 +1,18 @@
 import '../App.css'
 
-function Softwareteam() {
+function SoftwareTeam() {
   return (
-    <div className="Home">
+    <div className="Page">
       <header className="Intro">
         <h1>Software Team</h1>
       </header>
       <section className="About">
         <p>
-          The software team develops movement logic, sensor processing, and navigation behavior so
-          the robot can travel from point A to point B with stable and reliable control.
+          Thello broothers
         </p>
       </section>
     </div>
   )
 }
 
-export default Softwareteam
+export default SoftwareTeam

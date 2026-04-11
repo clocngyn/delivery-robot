@@ -3,18 +3,18 @@ import { Link } from 'react-router-dom'
 
 function Home() {
   return (
-    <div className="Home">
+    <div className="Page">
       <header className="Intro">
-        <div className="Intro-text">
+        <div className="IntroTitle">
           <h1>Food Delivery Robot</h1>
-          <ul className="Intro-bullets">
+          <ul className="IntroDescription">
             <li>An engineering project combining mechanical design, embedded systems, and software. This robot transports food using sensor-based navigation, motor control, and wireless communication through an ESP32.</li>
           </ul>
         </div>
         <img
           className="robot-pic"
           src={`${import.meta.env.BASE_URL}robot-real.png`}
-          alt="Delivery Robot"
+          /* Robot pic */
         />
       </header>
 
@@ -72,7 +72,7 @@ function Home() {
       </div>
 
       <section className="Home-pics">
-        <h2>Gallery</h2>
+        <h2>Photos</h2>
         <div className="Home-gallery-grid">
           <figure className="gallery-item">
             <img
