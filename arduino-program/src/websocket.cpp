@@ -4,6 +4,16 @@
 AsyncWebServer server(80);          // declare server using port 80
 AsyncWebSocket webSocket("/ws");    // declare an AsyncWebSocket object with the address "/ws"
 
+// helper function to turn raw data back into string
+String toStringData(uint8_t *data, size_t len) {
+    String command = "";                // data is sent as raw bytes so this loop
+    for (size_t i = 0; i < len; i++) {  // assembles the data back into a string
+        command += (char)data[i];
+    }
+    command.trim(); // clean the string just in case
+    return command;
+}
+
 // WebSocket listener function
 // when signals are sent from websocket.js they are heard here
 
@@ -14,21 +24,30 @@ void onWebSocketEvent(AsyncWebSocket *server, AsyncWebSocketClient *client, AwsE
     Serial.println("Browser connected to WebSocket!"); 
     client->text("{\"status\":\"ok\"}");                  // test json message
   } else if (type == WS_EVT_DATA) {
-    String command = "";                // data is sent as raw bytes so this loop
-    for (size_t i = 0; i < len; i++) {  // assembles the data back into a string
-        command += (char)data[i];
+
+
+
+    if (len == 1) {      // char case, used for quick processing
+      char command = toupper((char)data[0]); //toupper() just in case
+
+      // if command is one of the proper chars, change drive state
+      if (strchr("FBRLS", command)) {
+        robotDriveState = command; 
+      }
+
+
+
+    } else {
+      //
     }
-    command.trim(); // clean the string just in case
-    robotDriveState = command;
+
+    
+
+    
     //Serial.println("raw data: "); test
     //Serial.print(command);
     }
-  
 }
-
-
-void webSocketInit();
-
 
 // init function is called once setting up
 void webSocketInit(){

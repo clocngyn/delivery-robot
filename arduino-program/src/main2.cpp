@@ -1,58 +1,26 @@
 #include "robot.h"
 #include "motordriver.h"
 
-int driveSpeed = 0;
-String robotDriveState = "STOP";
-String testString = "";
-
+int driveSpeed = 255;
 
 void setup() {
   Serial.begin(115200);                       // esp32 can read at 115200 bps
+  Serial2.begin(115200, SERIAL_8N1, 16, 17);  // opens the 2nd serial port
   initMotorDriver();
-  WiFi.begin("iPhone", "tset2sdkt5q4");       // (wifi name, password)
-  while (WiFi.status() != WL_CONNECTED) {     // yield until wifi connected
-    delay(500);
-    Serial.print("."); 
-  }
-  // print when connected
-  String connectMessage = "\nConnected! IP address: " + WiFi.localIP().toString();
-  Serial.println(connectMessage);
-
-  // begin littleFS
-  if(!LittleFS.begin(true)) {
-    Serial.println("LittleFS Mount Failed");
-  } else {
-    Serial.println("LittleFS Mount Success");
-  }
-  webSocketInit();
   
-  Serial.println("Setup done");
+  Serial.println("ESP2 Setup done");
 }
 
 
 void loop() {
-  webSocket.cleanupClients();     // cleans up disconnected clients
-
-  /*if sensor too cllose, set speed lower
-      temp codeee
-  */ 
-  driveSpeed = 255;
-  static String lastDriveState; // records the last state
-  // since we recorded the last drive state,
-  // this block will only run when the state changes instead of every tick
-  if (robotDriveState != lastDriveState) {
-    Serial.println(robotDriveState);
-    if (robotDriveState != "STOP") {
-      drive(robotDriveState);
-    } else {
-      stop();
+ if (Serial2.available() > 0) {
+    char incomingByte = Serial2.read();
+    
+    // listens for drive commands
+    if (strchr("FBRLS", incomingByte)) {
+      drive(incomingByte);
     }
-    lastDriveState = robotDriveState; //update state
   }
-  //Serial.println(testString);
-  delay(100);
-
-  
 }
 
 

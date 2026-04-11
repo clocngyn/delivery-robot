@@ -47,17 +47,17 @@ function onMessage(message) {
 // binds the dpad to websocket
 function initControls() {
     const directions = { // dictionary of directions key : value, ex. indexing up will return forward
-        'up': 'FORWARD',
-        'down': 'BACKWARD',
-        'left': 'LEFT',
-        'right': 'RIGHT'
+        'up'        : 'F',
+        'down'      : 'B',
+        'left'      : 'L',
+        'right'     : 'R'
     };
 
     // for every element in directions, for every id (up, down, etc), find that button and set the functionality
     Object.keys(directions).forEach(id => {
         const button = document.getElementById(id);
         const startMove = () => websocket.send(directions[id]); // websocket.send() sends whats in the parenthesis
-        const stopMove = () => websocket.send('STOP');          // to the listener in websocket.cpp
+        const stopMove = () => websocket.send('S');          // to the listener in websocket.cpp
 
         button.onmousedown = startMove;
         button.ontouchstart = startMove; 

@@ -1,14 +1,17 @@
 #include "robot.h"
-#include "motordriver.h"
 
 int driveSpeed = 0;
-String robotDriveState = "STOP";
+char robotDriveState = 'S';
 String testString = "";
 
 
 void setup() {
   Serial.begin(115200);                       // esp32 can read at 115200 bps
-  initMotorDriver();
+  Serial2.begin(115200, SERIAL_8N1, 16, 17);  // opens the 2nd serial port
+
+
+
+
   WiFi.begin("iPhone", "tset2sdkt5q4");       // (wifi name, password)
   while (WiFi.status() != WL_CONNECTED) {     // yield until wifi connected
     delay(500);
@@ -37,17 +40,14 @@ void loop() {
       temp codeee
   */ 
   driveSpeed = 255;
-  static String lastDriveState; // records the last state
-  // since we recorded the last drive state,
-  // this block will only run when the state changes instead of every tick
-  if (robotDriveState != lastDriveState) {
-    Serial.println(robotDriveState);
-    if (robotDriveState != "STOP") {
-      drive(robotDriveState);
-    } else {
-      stop();
-    }
-    lastDriveState = robotDriveState; //update state
+  static char lastDriveState = 'S'; // records the last state
+
+  // changes drive direction
+  if (robotDriveState != lastDriveState) {  // check for changes to prevent throttling
+    Serial.println(robotDriveState);        // just for confirmation on esp1 serial monitor
+    Serial2.print(robotDriveState);         // printing to serial 2 sends the actual char to esp2
+    
+    lastDriveState = robotDriveState;       //update state
   }
   //Serial.println(testString);
   delay(100);
