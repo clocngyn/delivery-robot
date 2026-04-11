@@ -19,9 +19,10 @@ void setup() {
   Serial.println(connectMessage);
 
   // begin littleFS
-  if(!LittleFS.begin()) {
+  if(!LittleFS.begin(true)) {
     Serial.println("LittleFS Mount Failed");
-    return;
+  } else {
+    Serial.println("LittleFS Mount Success");
   }
   webSocketInit();
   
@@ -37,7 +38,6 @@ void loop() {
   */ 
   driveSpeed = 255;
   static String lastDriveState; // records the last state
-
   // since we recorded the last drive state,
   // this block will only run when the state changes instead of every tick
   if (robotDriveState != lastDriveState) {
@@ -54,7 +54,5 @@ void loop() {
 
   
 }
-
-
 
 

@@ -3,13 +3,21 @@
 
 // set the pins to output
 void initMotorDriver() {
-    pinMode(motorA_in1, OUTPUT);
-    pinMode(motorA_in2, OUTPUT);
-    pinMode(motorA_pwm, OUTPUT);
+    pinMode(motor1A_in1, OUTPUT);
+    pinMode(motor1A_in2, OUTPUT);
+    pinMode(motor1A_pwm, OUTPUT);
     
-    pinMode(motorB_in1, OUTPUT);
-    pinMode(motorB_in2, OUTPUT);
-    pinMode(motorB_pwm, OUTPUT);
+    pinMode(motor1B_in1, OUTPUT);
+    pinMode(motor1B_in2, OUTPUT);
+    pinMode(motor1B_pwm, OUTPUT);
+
+    pinMode(motor2A_in1, OUTPUT);
+    pinMode(motor2A_in2, OUTPUT);
+    pinMode(motor2A_pwm, OUTPUT);
+    
+    pinMode(motor2B_in1, OUTPUT);
+    pinMode(motor2B_in2, OUTPUT);
+    pinMode(motor2B_pwm, OUTPUT);
     
     //pinMode(stbyPin, OUTPUT);
     //digitalWrite(stbyPin, HIGH); //keeps the motor active
@@ -23,44 +31,68 @@ void drive(String direction) {
         return;
     }
 
-    analogWrite(motorA_pwm, driveSpeed);
-    analogWrite(motorB_pwm, driveSpeed);
+    analogWrite(motor1A_pwm, driveSpeed);
+    analogWrite(motor1B_pwm, driveSpeed);
+    analogWrite(motor2A_pwm, driveSpeed);
+    analogWrite(motor2B_pwm, driveSpeed);
     if (direction == "FORWARD") {
-        digitalWrite(motorA_in1, HIGH);
-        digitalWrite(motorA_in2, LOW);
-        digitalWrite(motorB_in1, HIGH);
-        digitalWrite(motorB_in2, LOW);
+        digitalWrite(motor1A_in1, HIGH);
+        digitalWrite(motor1A_in2, LOW);
+        digitalWrite(motor1B_in1, HIGH);
+        digitalWrite(motor1B_in2, LOW);
+        digitalWrite(motor2A_in1, HIGH);
+        digitalWrite(motor2A_in2, LOW);
+        digitalWrite(motor2B_in1, HIGH);
+        digitalWrite(motor2B_in2, LOW);
     } else if (direction == "BACKWARD") {
-        digitalWrite(motorA_in1, LOW);
-        digitalWrite(motorA_in2, HIGH);
-        digitalWrite(motorB_in1, LOW);
-        digitalWrite(motorB_in2, HIGH);
+        digitalWrite(motor1A_in1, LOW);
+        digitalWrite(motor1A_in2, HIGH);
+        digitalWrite(motor1B_in1, LOW);
+        digitalWrite(motor1B_in2, HIGH);
+        digitalWrite(motor2A_in1, LOW);
+        digitalWrite(motor2A_in2, HIGH);
+        digitalWrite(motor2B_in1, LOW);
+        digitalWrite(motor2B_in2, HIGH);
     } else if (direction == "LEFT") {
-        digitalWrite(motorA_in1, HIGH);
-        digitalWrite(motorA_in2, LOW);
-        digitalWrite(motorB_in1, LOW);
-        digitalWrite(motorB_in2, HIGH);
+        digitalWrite(motor1A_in1, HIGH);
+        digitalWrite(motor1A_in2, LOW);
+        digitalWrite(motor1B_in1, LOW);
+        digitalWrite(motor1B_in2, HIGH);
+        digitalWrite(motor2A_in1, HIGH);
+        digitalWrite(motor2A_in2, LOW);
+        digitalWrite(motor2B_in1, LOW);
+        digitalWrite(motor2B_in2, HIGH);
     } else if (direction == "RIGHT") {
-        digitalWrite(motorA_in1, LOW);
-        digitalWrite(motorA_in2, HIGH);
-        digitalWrite(motorB_in1, HIGH);
-        digitalWrite(motorB_in2, LOW);
+        digitalWrite(motor1A_in1, LOW);
+        digitalWrite(motor1A_in2, HIGH);
+        digitalWrite(motor1B_in1, HIGH);
+        digitalWrite(motor1B_in2, LOW);
+        digitalWrite(motor2A_in1, LOW);
+        digitalWrite(motor2A_in2, HIGH);
+        digitalWrite(motor2B_in1, HIGH);
+        digitalWrite(motor2B_in2, LOW);
     }
 }
 
 // move is used to actually set the rotation of the motors
 void move(int leftSpeed, int rightSpeed) {
-
+    
 }
 
 void stop() {
     //testString = "STOP";
-    analogWrite(motorA_pwm, 0);
-    analogWrite(motorB_pwm, 0);
-    digitalWrite(motorA_in1, LOW);
-    digitalWrite(motorA_in2, LOW);
-    digitalWrite(motorB_in1, LOW);
-    digitalWrite(motorB_in2, LOW);
+    analogWrite(motor1A_pwm, 0);
+    analogWrite(motor1B_pwm, 0);
+    analogWrite(motor2A_pwm, 0);
+    analogWrite(motor2B_pwm, 0);
+    digitalWrite(motor1A_in1, LOW);
+    digitalWrite(motor1A_in2, LOW);
+    digitalWrite(motor1B_in1, LOW);
+    digitalWrite(motor1B_in2, LOW);
+    digitalWrite(motor2A_in1, LOW);
+    digitalWrite(motor2A_in2, LOW);
+    digitalWrite(motor2B_in1, LOW);
+    digitalWrite(motor2B_in2, LOW);
 }
 
 
