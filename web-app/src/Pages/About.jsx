@@ -61,7 +61,7 @@ function About() {
         <div className='MemberGrid'>
 
           <div className="MemberCard">
-            <img src={`${import.meta.env.BASE_URL}robot-temp.svg`} 
+            <img src={`${import.meta.env.BASE_URL}Gael.png`} 
             className="MemberPhoto" />
             <h3>Gael Mendoza-Mazquitic</h3>
             <p>Team Lead</p>
