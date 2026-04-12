@@ -1,3 +1,4 @@
+/* Pathway */
 import './App.css'
 import { HashRouter, Routes, Route } from 'react-router-dom'
 import Home from './Pages/Home'
@@ -10,18 +11,20 @@ import NavBar from './components/NavBar'
 function App() {
   return (
     <HashRouter>
-      <div className="MainApp">
-        <header>
-          <NavBar />
-        </header>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/Designteam" element={<Designteam />} />
-          <Route path="/Hardwareteam" element={<Hardwareteam />} />
-          <Route path="/Softwareteam" element={<Softwareteam />} />
-          <Route path="/About" element={<About />} />
-        </Routes>
-      </div>
+ <div className="RobotWeb">
+  <header>
+    <NavBar />
+  </header>
+  <main className = "RobotWebInfo">
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/Designteam" element={<Designteam />} />
+      <Route path="/Hardwareteam" element={<Hardwareteam />} />
+      <Route path="/Softwareteam" element={<Softwareteam />} />
+      <Route path="/About" element={<About />} />
+    </Routes>
+  </main>
+</div>
     </HashRouter>
   )
 }
