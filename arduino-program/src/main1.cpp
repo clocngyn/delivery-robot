@@ -1,5 +1,8 @@
 #include "robot.h"
 #include "sensor.h"
+
+#include <ESPmDNS.h> // used to name the ip
+
 // define variables from robot.h
 int     driveSpeed          = 0;
 char    robotDriveState     = 'S';
@@ -22,13 +25,14 @@ void setup() {
   Serial.begin(115200);                       // esp32 can read at 115200 bps
   Serial2.begin(115200, SERIAL_8N1, 16, 17);  // opens the 2nd serial port
 
-
-
-
   WiFi.begin("iPhone", "tset2sdkt5q4");       // (wifi name, password)
   while (WiFi.status() != WL_CONNECTED) {     // yield until wifi connected
     delay(500);
     Serial.print("."); 
+  }
+
+  if (MDNS.begin("deliveryrobot")) {
+    Serial.println("mDNS responder started");
   }
   // print when connected
   String connectMessage = "\nConnected! IP address: " + WiFi.localIP().toString();
