@@ -1,8 +1,14 @@
 #include "robot.h"
+#include "sensor.h"
+// define variables from robot.h
+int     driveSpeed          = 0;
+char    robotDriveState     = 'S';
+String  testString          = "";
+bool    canDrive            = true;
 
-int driveSpeed = 0;
-char robotDriveState = 'S';
-String testString = "";
+// used in sensor algorithm
+unsigned long lastSensorTime = 0;
+const int sensorInterval = 60; // 60ms between sensor sweeps
 
 // helper to send change and send all drive state references
 void changeDriveState(char robotDriveState, char &lastDriveState) {
@@ -43,13 +49,17 @@ void setup() {
 void loop() {
   webSocket.cleanupClients();     // cleans up disconnected clients
 
-  /*if sensor too cllose, set speed lower
-      temp codeee
-  */ 
+  unsigned long currentTime = millis();
+  // use this if to delay sensor calls asynchronously
+  if (currentTime - lastSensorTime >= sensorInterval) {
+    sense();
+    // these 2 lines are needed for esp2 to understand this is a speed command
+    Serial2.print('S');     // S is for speed, esp receives these 2 lines as  
+    Serial2.println(255);   // S225\n, can read up to \n and see the S
+    lastSensorTime = currentTime; // Reset the timer
+  }
 
-  // these 2 lines are needed for esp2 to understand this is a speed command
-  Serial2.print('S');     // S is for speed, esp receives these 2 lines as  
-  Serial2.println(255);   // S225\n, can read up to \n and see the S
+  
   
   static char lastDriveState = 'S'; // records the last state
   // changes drive direction
