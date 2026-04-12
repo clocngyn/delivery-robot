@@ -3,64 +3,92 @@
 
 // set the pins to output
 void initMotorDriver() {
-    pinMode(motorA_in1, OUTPUT);
-    pinMode(motorA_in2, OUTPUT);
-    pinMode(motorA_pwm, OUTPUT);
+    pinMode(motor1A_in1, OUTPUT);
+    pinMode(motor1A_in2, OUTPUT);
+    pinMode(motor1A_pwm, OUTPUT);
     
-    pinMode(motorB_in1, OUTPUT);
-    pinMode(motorB_in2, OUTPUT);
-    pinMode(motorB_pwm, OUTPUT);
+    pinMode(motor1B_in1, OUTPUT);
+    pinMode(motor1B_in2, OUTPUT);
+    pinMode(motor1B_pwm, OUTPUT);
+
+    pinMode(motor2A_in1, OUTPUT);
+    pinMode(motor2A_in2, OUTPUT);
+    pinMode(motor2A_pwm, OUTPUT);
+    
+    pinMode(motor2B_in1, OUTPUT);
+    pinMode(motor2B_in2, OUTPUT);
+    pinMode(motor2B_pwm, OUTPUT);
     
     //pinMode(stbyPin, OUTPUT);
     //digitalWrite(stbyPin, HIGH); //keeps the motor active
 }
 
 // drive function mainly used to receive and interpret the websocket signals
-void drive(String direction) {
-    testString = direction;
-    if (direction == "STOP") { // redundant guard statement
+void drive(char direction) {
+    //testString = direction;
+    if (direction == 'S') { // redundant guard statement
         stop();
         return;
     }
 
-    analogWrite(motorA_pwm, driveSpeed);
-    analogWrite(motorB_pwm, driveSpeed);
-    if (direction == "FORWARD") {
-        digitalWrite(motorA_in1, HIGH);
-        digitalWrite(motorA_in2, LOW);
-        digitalWrite(motorB_in1, HIGH);
-        digitalWrite(motorB_in2, LOW);
-    } else if (direction == "BACKWARD") {
-        digitalWrite(motorA_in1, LOW);
-        digitalWrite(motorA_in2, HIGH);
-        digitalWrite(motorB_in1, LOW);
-        digitalWrite(motorB_in2, HIGH);
-    } else if (direction == "LEFT") {
-        digitalWrite(motorA_in1, HIGH);
-        digitalWrite(motorA_in2, LOW);
-        digitalWrite(motorB_in1, LOW);
-        digitalWrite(motorB_in2, HIGH);
-    } else if (direction == "RIGHT") {
-        digitalWrite(motorA_in1, LOW);
-        digitalWrite(motorA_in2, HIGH);
-        digitalWrite(motorB_in1, HIGH);
-        digitalWrite(motorB_in2, LOW);
+    if (direction == CMD_FORWARD) {
+        digitalWrite(motor1A_in1, HIGH);
+        digitalWrite(motor1A_in2, LOW);
+        digitalWrite(motor1B_in1, HIGH);
+        digitalWrite(motor1B_in2, LOW);
+        digitalWrite(motor2A_in1, HIGH);
+        digitalWrite(motor2A_in2, LOW);
+        digitalWrite(motor2B_in1, HIGH);
+        digitalWrite(motor2B_in2, LOW);
+    } else if (direction == CMD_BACKWARD) {
+        digitalWrite(motor1A_in1, LOW);
+        digitalWrite(motor1A_in2, HIGH);
+        digitalWrite(motor1B_in1, LOW);
+        digitalWrite(motor1B_in2, HIGH);
+        digitalWrite(motor2A_in1, LOW);
+        digitalWrite(motor2A_in2, HIGH);
+        digitalWrite(motor2B_in1, LOW);
+        digitalWrite(motor2B_in2, HIGH);
+    } else if (direction == CMD_LEFT) {
+        digitalWrite(motor1A_in1, HIGH);
+        digitalWrite(motor1A_in2, LOW);
+        digitalWrite(motor1B_in1, LOW);
+        digitalWrite(motor1B_in2, HIGH);
+        digitalWrite(motor2A_in1, HIGH);
+        digitalWrite(motor2A_in2, LOW);
+        digitalWrite(motor2B_in1, LOW);
+        digitalWrite(motor2B_in2, HIGH);
+    } else if (direction == CMD_RIGHT) {
+        digitalWrite(motor1A_in1, LOW);
+        digitalWrite(motor1A_in2, HIGH);
+        digitalWrite(motor1B_in1, HIGH);
+        digitalWrite(motor1B_in2, LOW);
+        digitalWrite(motor2A_in1, LOW);
+        digitalWrite(motor2A_in2, HIGH);
+        digitalWrite(motor2B_in1, HIGH);
+        digitalWrite(motor2B_in2, LOW);
     }
 }
 
-// move is used to actually set the rotation of the motors
-void move(int leftSpeed, int rightSpeed) {
-
-}
-
+// stop function
 void stop() {
     //testString = "STOP";
-    analogWrite(motorA_pwm, 0);
-    analogWrite(motorB_pwm, 0);
-    digitalWrite(motorA_in1, LOW);
-    digitalWrite(motorA_in2, LOW);
-    digitalWrite(motorB_in1, LOW);
-    digitalWrite(motorB_in2, LOW);
+    digitalWrite(motor1A_in1, LOW);
+    digitalWrite(motor1A_in2, LOW);
+    digitalWrite(motor1B_in1, LOW);
+    digitalWrite(motor1B_in2, LOW);
+    digitalWrite(motor2A_in1, LOW);
+    digitalWrite(motor2A_in2, LOW);
+    digitalWrite(motor2B_in1, LOW);
+    digitalWrite(motor2B_in2, LOW);
+}
+
+void setSpeed(int speedValue) {
+    speedValue = constrain(speedValue, 0, 255); // clamp 
+    analogWrite(motor1A_pwm, speedValue);
+    analogWrite(motor1B_pwm, speedValue);
+    analogWrite(motor2A_pwm, speedValue);
+    analogWrite(motor2B_pwm, speedValue);
 }
 
 

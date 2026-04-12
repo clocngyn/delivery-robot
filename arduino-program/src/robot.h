@@ -13,14 +13,20 @@
 #include <ArduinoJson.h>              
 #include <WiFi.h>
 
+#define CMD_FORWARD     'F'
+#define CMD_BACKWARD    'B'
+#define CMD_LEFT        'L'
+#define CMD_RIGHT       'R'
+#define CMD_STOP        'S'
+
 // extern makes these global, can be accessed anywhere this header is included
 extern AsyncWebServer server;
 extern AsyncWebSocket webSocket;
 
-extern String   robotDriveState;    // ex. "FORWARD", "STOP", these will be modified by websocket.cpp
+extern char     robotDriveState;    // ex. 'F', 'B', 'S', these will be modified by websocket.cpp
                                     // and main will act based on the current state
 extern bool     canDrive;    
-extern int      driveSpeed;       
+   
 
 extern String testString;
 
