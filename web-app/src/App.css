@@ -227,3 +227,54 @@ nav ul li a:hover {
   margin-top: 1rem;
   border: none;
 }
+
+/* Mobile - screens smaller than 768px */
+@media (max-width: 768px) {
+
+  /* Stack intro title and image vertically */
+  .IntroTitle {
+    flex-direction: column;
+  }
+
+  /* Make robot image full width */
+  .HomeRobotImg {
+    width: 100%;
+    height: auto;
+  }
+
+  /* Stack info boxes to one column */
+  .InfoBoxes {
+    grid-template-columns: 1fr;
+  }
+
+  /* Stack feature cards to two columns */
+  .ProjectFeaturesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Stack gallery to one column */
+  .HomeGrid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Stack member cards to two columns */
+  .MemberGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Stack design models to one column */
+  .DesignModelGrid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Shrink the 3D model viewer height */
+  .DesignFrame {
+    height: 250px;
+  }
+
+  /* Make explore buttons wrap */
+  .IntroExploreGrid {
+    flex-wrap: wrap;
+  }
+
+}
