@@ -278,3 +278,44 @@ nav ul li a:hover {
   }
 
 }
+
+/* Hardware Team Page */
+.HardwareOverview {
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+/* Materials section */
+.HardwareMaterials {
+  margin-bottom: 2rem;
+}
+
+.HardwareMaterials h2 {
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.HardwareMaterials ul {
+  padding-left: 1.5rem;
+  margin-top: 0.5rem;
+  line-height: 2;
+}
+
+/* Wiring section */
+.HardwareWiring {
+  margin-bottom: 2rem;
+}
+
+.HardwareWiring h2 {
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+/* Wiring image */
+.HardwareImg {
+  width: 100%;
+  border-radius: 8px;
+  margin-top: 1rem;
+}
