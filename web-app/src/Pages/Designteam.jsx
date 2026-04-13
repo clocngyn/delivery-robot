@@ -2,7 +2,7 @@ import '../App.css'
 
 function Designteam() {
   return (
-    <>
+    <div className='RobotWebInfo'> {/* Keeps layout centered like Home/About */}
       {/* Page Title */}
       <h1>Design Team</h1>
 
@@ -22,26 +22,26 @@ function Designteam() {
           {/* Model 1 */}
           <div className='DesignCard'>
             <h3>Body</h3>
-             {/* Embeded file from fusion */}
             <iframe
               className="DesignFrame"
-             src="https://mycsu770.autodesk360.com/shares/public/SH90d2dQT28d5b6028117dcccc210c6c48dd?mode=embed" width="640" height="480" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"  frameborder="0"
+              src="https://mycsu770.autodesk360.com/shares/public/SH90d2dQT28d5b6028117dcccc210c6c48dd?mode=embed"
+              allowFullScreen
             />
           </div>
 
           {/* Model 2 */}
           <div className='DesignCard'>
-            <h3>Chasis + Suspension</h3>
+            <h3>Chassis + Suspension</h3>
             <iframe
               className="DesignFrame"
-              src="https://mycsu770.autodesk360.com/shares/public/SH90d2dQT28d5b6028110ddcc53b9dd688cd?mode=embed" width="640" height="480" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"  frameborder="0"
+              src="https://mycsu770.autodesk360.com/shares/public/SH90d2dQT28d5b6028110ddcc53b9dd688cd?mode=embed"
               allowFullScreen
             />
           </div>
 
         </div>
       </section>
-    </>
+    </div>
   )
 }
 

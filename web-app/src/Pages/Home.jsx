@@ -57,15 +57,15 @@ function Home() {
         <h2>Photos</h2>
         <div className = "HomeGrid">
           <figure>
-            <img src = {`${import.meta.env.BASE_URL}gallery-1.png`} alt="Prototype testing" />
-            <figcaption>Prototype testing</figcaption>
+            <img src = {`${import.meta.env.BASE_URL}Body.png`}/>
+            <figcaption>Body Test Fitting</figcaption>
           </figure>
           <figure>
-            <img src = {`${import.meta.env.BASE_URL}gallery-2.png`} alt="Navigation test" />
+            <img src = {`${import.meta.env.BASE_URL}gallery-2.png`}/>
             <figcaption>Navigation test</figcaption>
           </figure>
           <figure>
-            <img src = {`${import.meta.env.BASE_URL}gallery-3.png`} alt="Final design" />
+            <img src = {`${import.meta.env.BASE_URL}gallery-3.png`} />
             <figcaption>Final design</figcaption>
           </figure>
         </div>

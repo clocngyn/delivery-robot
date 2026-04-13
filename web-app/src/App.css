@@ -27,6 +27,14 @@ h1, h2, h3 {
   padding: 40px 20px;
 }
 
+.RobotWebInfo, .AboutPage, .SoftwareOverview{
+  animation: zoomIn 0.4s ease;
+}
+/* Allows for each page to fade in smootly when moving to the next page */
+@keyframes zoomIn {
+  from { opacity: 0; transform: scale(0.97); }
+  to { opacity: 1; transform: scale(1); }
+}
 
 /* Navbar */
 nav {
@@ -230,6 +238,9 @@ background: white;
   border-radius: 8px;
   padding: 1.5rem;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
 }
 
 .MemberPhoto {
@@ -251,13 +262,7 @@ background: white;
   color: #6b7280;
 }
 
-/*Make MemberCard a positioned container */
-.MemberCard {
-  position: relative;
-  overflow: hidden;
-}
-
-/* Hidden overlay card*/
+/* Hidden overlay card */
 .MemberInfoCard {
   position: absolute;
   top: 0;
@@ -275,15 +280,26 @@ background: white;
   border-radius: 8px;
 }
 
-/* Show overlay when hovering card/overlay */
+/* 1. This adds the red outline to the card itself on hover */
+.MemberCard:hover {
+  border: 1px solid #ff3131;
+  box-shadow: 0 5px 15px rgba(255, 49, 49, 0.15);
+}
+
+/* 2. Show the back-side info on hover */
 .MemberCard:hover .MemberInfoCard {
   opacity: 1;
   pointer-events: auto;
 }
 
-/* Hide underlying content when overlay is visible */
-.MemberCard:hover .MemberPhoto, .MemberCard:hover > h3, .MemberCard:hover > p {
-  opacity: 0;
+/* 3. Hide the front-side photo/text on hover */
+.MemberPhoto, .MemberCard h3, .MemberCard p {
+  transition: opacity 0.3s ease;
+}
+
+/* LinkedIn link hover color */
+.MemberInfoCard a:hover {
+  color: #ff3131;
 }
 
 /* Design Page */
@@ -318,7 +334,7 @@ background: white;
   border-radius: 12px;
   border: 1px solid transparent; 
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
 }
 
 .DesignCard:hover {

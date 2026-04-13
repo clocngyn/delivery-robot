@@ -37,7 +37,6 @@ function Hardwareteam() {
         <h2>Wiring Diagram</h2>
         <div className="RobotBoxes">
           <h3>Wiring Design</h3>
-          <p>Hand-drawn wiring design for the robot electronics.</p>
           <img
             className="HardwareImg"
             src={`${import.meta.env.BASE_URL}WiringDiagram.png`}
