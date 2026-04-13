@@ -2,28 +2,40 @@
 #include "sensor.h"
 
 #include <ESPmDNS.h> // used to name the ip
+#include <TinyGPS++.h>
+
+#define MotorSerial Serial1
+#define GPSSerial   Serial2
 
 // define variables from robot.h
-int     driveSpeed          = 0;
+int     driveSpeed          = 255;
 char    robotDriveState     = 'S';
 String  testString          = "";
 bool    canDrive            = true;
 
+TinyGPSPlus GPS;
+
+// loop logic
+
+unsigned long lastGPSDebugTime = 0;
+
 // used in sensor algorithm
 unsigned long lastSensorTime = 0;
-const int sensorInterval = 60; // 60ms between sensor sweeps
+const int sensorInterval = 60; // 60ms between thoughts
 
 // helper to send change and send all drive state references
 void changeDriveState(char robotDriveState, char &lastDriveState) {
   Serial.println(robotDriveState);        // just for confirmation on esp1 serial monitor
-  Serial2.print(robotDriveState);         // printing to serial 2 sends the actual char to esp2
+  MotorSerial.print(robotDriveState);         // printing to serial 2 sends the actual char to esp2
   lastDriveState = robotDriveState;       //update state
 }
 
+void sendGPS();
 
 void setup() {
   Serial.begin(115200);                       // esp32 can read at 115200 bps
-  Serial2.begin(115200, SERIAL_8N1, 16, 17);  // opens the 2nd serial port
+  MotorSerial.begin(115200, SERIAL_8N1, 18, 19);  // opens the 2nd serial port to speak to 2nd esp
+  GPSSerial.begin(9600, SERIAL_8N1, 16, 17);    // gps needs another serial
 
   WiFi.begin("iPhone", "tset2sdkt5q4");       // (wifi name, password)
   while (WiFi.status() != WL_CONNECTED) {     // yield until wifi connected
@@ -33,6 +45,8 @@ void setup() {
 
   if (MDNS.begin("deliveryrobot")) {
     Serial.println("mDNS responder started");
+  } else {
+    Serial.println("Error setting up MDNS responder!");
   }
   // print when connected
   String connectMessage = "\nConnected! IP address: " + WiFi.localIP().toString();
@@ -53,33 +67,80 @@ void setup() {
 void loop() {
   webSocket.cleanupClients();     // cleans up disconnected clients
 
-  unsigned long currentTime = millis();
+  
   // use this if to delay sensor calls asynchronously
+  
+  unsigned long currentTime = millis();
+  static int lastDriveSpeed = driveSpeed;
+  
+  
   if (currentTime - lastSensorTime >= sensorInterval) {
     sense();
-    // these 2 lines are needed for esp2 to understand this is a speed command
-    Serial2.print('S');     // S is for speed, esp receives these 2 lines as  
-    Serial2.println(255);   // S225\n, can read up to \n and see the S
+
+    static char lastDriveState = 'S'; // records the last state
+    // changes drive direction
+    if (!canDrive && robotDriveState != 'S') {  // if cant drive and not stopped
+      if (lastDriveState != 'S') {              // if last state is not stopped, change to stop
+        changeDriveState('S', lastDriveState);
+      }
+    } else if (canDrive && robotDriveState != lastDriveState) {     // if can drive and in a new state
+      changeDriveState(robotDriveState, lastDriveState);
+    }
+
+    // if speed has changed send speed change to esp2
+    if (driveSpeed != lastDriveSpeed) {
+        MotorSerial.print('V');
+        MotorSerial.println(driveSpeed);
+        lastDriveSpeed = driveSpeed;
+    }
     lastSensorTime = currentTime; // Reset the timer
   }
 
   
-  
-  static char lastDriveState = 'S'; // records the last state
-  // changes drive direction
-  if (canDrive) {
-    if (robotDriveState != lastDriveState) {  // check for changes to prevent throttling
-      changeDriveState(robotDriveState, lastDriveState);
-    }
-  } else if (robotDriveState != 'S') {
-    char Stop = 'S';
-    changeDriveState(Stop, lastDriveState);
 
+
+  // debug print, makes sure gps serial was getting signal in the first place
+  /*
+  while (GPSSerial.available() > 0) {
+    char c = GPSSerial.read();
+    Serial.print(c); // This prints raw NMEA sentences
+    GPS.encode(c);
+  }*/
+
+  // sends info to websocket, otherwise checks how many satellites
+  if (GPS.location.isUpdated()) {
+    sendTelemetry();
+  } else if (currentTime - lastGPSDebugTime >= 5000) {  // timeout function, send what we have even
+    sendTelemetry();                                    // if theres no gps
+    Serial.print("Satellites in view: ");
+    Serial.println(GPS.satellites.value()); 
+    lastGPSDebugTime = currentTime;
   }
   
   //Serial.println(testString);
   delay(20); 
 }
 
+
+void sendTelemetry() {
+  JsonDocument doc;
+  
+  // gps keys
+  doc["lat"] = GPS.location.lat();
+  doc["lng"] = GPS.location.lng();
+  doc["status"] = "Active";
+
+  // other metrics
+  doc["wifi"] = WiFi.RSSI();            // wifi 
+  doc["safe"] = canDrive;               // if the robot can drive
+  doc["spd"]  = driveSpeed;             // current speed 
+  doc["sats"] = GPS.satellites.value(); // satellites
+
+  String jsonOutput;
+  serializeJson(doc, jsonOutput);
+  
+  // send to websocket, ESPAsyncWebServer function, triggers onMessage in websocket
+  webSocket.textAll(jsonOutput); 
+}
 
 
