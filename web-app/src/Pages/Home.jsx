@@ -20,10 +20,7 @@ function Home() {
 <section className = "InfoBoxes">
   <div className = "RobotBoxes">
     <h3>Overview</h3>
-    <p>This project was about making a food delivery robot, designed to carry a small payload 
-      and travel from point A to point B with stability and control. It was built by a fourteen 
-      person team over the course of seven weeks. The robot integrates embedded electronics, 
-      mobility systems, structural design, and ESP32 based navigation software into a cohesive platform. </p>
+    <p>This project was about making a food delivery robot, designed to carry a small payload and travel from point A to point B with stability and control. It was built by a fourteen person team over the course of seven weeks. The robot integrates embedded electronics, mobility systems, structural design, and ESP32 based navigation software into a cohesive platform.</p>
   </div>
   <div className = "RobotBoxes">
     <h3>Features</h3>

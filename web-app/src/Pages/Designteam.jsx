@@ -10,11 +10,7 @@ function Designteam() {
       <section className="DesignOverview">
         <div className='RobotBoxes'>
           <h3>Overview</h3>
-          <p>The design team defines the robot’s body layout by creating the physical structure and developing a stable, 
-            cooler-sized chassis. This is done through SolidWorks modeling, material selection, and 3D printing with PETG and PLA. 
-            During this process they prototype and build the frame to ensure durability, balance, and smooth mobility while also designing the payload system, 
-            electronics housing, and all structural components required for safe operation. Their work additionally includes implementing advanced mechanical features 
-            such as suspension, modular attachments, and a magnetic lid‑locking mechanism.</p>
+          <p>The design team develops the robot’s physical structure and cooler‑sized chassis through SolidWorks modeling, material selection, and 3D‑printed PETG/PLA components. They prototype the frame for durability and mobility while designing the payload system, electronics housing, and structural elements, integrating suspension, modular attachments, and a magnetic lid-locking mechanism.</p>
         </div>
       </section>
 
