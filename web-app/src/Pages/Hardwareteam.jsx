@@ -35,7 +35,7 @@ function Hardwareteam() {
 
       {/* Wiring Diagrams */}
       <section className="HardwareWiring">
-        <h2>Wiring Diagrams</h2>
+        <h2>Wiring Diagram</h2>
         <div className="RobotBoxes">
           <h3>Wiring Design</h3>
           <p>Hand-drawn wiring design for the robot electronics.</p>

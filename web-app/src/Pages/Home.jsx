@@ -7,7 +7,7 @@ function Home() {
       {/* Intro + Description */}
       <section className = "IntroTitle">
         <div className = "IntroTitleText">
-          <h1>Food Delivery Robot</h1>
+          <h1> Food Delivery Robot</h1>
         </div>
         <img
           className = "HomeRobotImg"
@@ -20,8 +20,10 @@ function Home() {
 <section className = "InfoBoxes">
   <div className = "RobotBoxes">
     <h3>Overview</h3>
-    <p>This robot transports food using sensor-based navigation, motor control, 
-    and wireless communication through an ESP32.</p>
+    <p>This project was about making a food delivery robot, designed to carry a small payload 
+      and travel from point A to point B with stability and control. It was built by a fourteen 
+      person team over the course of seven weeks. The robot integrates embedded electronics, 
+      mobility systems, structural design, and ESP32 based navigation software into a cohesive platform. </p>
   </div>
   <div className = "RobotBoxes">
     <h3>Features</h3>
