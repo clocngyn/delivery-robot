@@ -10,8 +10,7 @@ function Hardwareteam() {
       <section className="HardwareOverview">
         <div className="RobotBoxes">
           <h3>Overview</h3>
-          <p>The hardware team builds the drivetrain, sensor wiring, battery system, and electronics
-          integration that allow the delivery robot to move safely and carry a small cooler payload.</p>
+          <p>The hardware team builds the drivetrain, battery system, sensor wiring, and full electronics integration that power the robot's movement and payload transport. They implement motors, power distribution, microcontroller links, and sensor hardware, forming the physical-electrical backbone that ensures reliable mobility and seamless operation with the ESP32-based navigation software.</p>
         </div>
       </section>
 
