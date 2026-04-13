@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 function Home() {
   return (
-    <>
+    <div className='RobotWebInfo'>
       {/* Intro + Description */}
       <section className = "IntroTitle">
         <div className = "IntroTitleText">
@@ -82,7 +82,7 @@ function Home() {
           <Link to ="/Softwareteam" className ="ExploreButton">Software Team</Link>
         </div>
       </section>
-    </>
+    </div>
   )
 }
 

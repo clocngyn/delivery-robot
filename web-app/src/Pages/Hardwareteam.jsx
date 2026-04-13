@@ -21,12 +21,14 @@ function Hardwareteam() {
         <div className="RobotBoxes">
           <h3>Components List</h3>
           <ul>
-            <li>ESP32 microcontroller</li>
-            <li>Motor driver</li>
+            <li>ESP32 Microcontroller x2</li>
+            <li>Motor Driver x2r</li>
             <li>DC motors x4</li>
-            <li>Ultrasonic sensors</li>
-            <li>Battery pack</li>
-            <li>Wiring and connectors</li>
+            <li>Ultrasonic Sensors x4</li>
+            <li>DCDC Converter x1</li>
+            <li>Battery x1</li>
+            <li>GPS Moduel</li>
+            <li>Wires</li>
           </ul>
         </div>
       </section>
