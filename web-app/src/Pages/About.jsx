@@ -57,7 +57,7 @@ function About() {
               <p>Software Lead</p>
             <div className="MemberInfoCard">
               <h3>LinkedIn</h3>
-          <a href="https://linkedin.com/in/..." 
+          <a href="https://www.linkedin.com/in/clocngyn/" 
           target="_blank" 
           rel="noopener">View Profile</a>
             </div>
@@ -76,7 +76,7 @@ function About() {
               <h3>Khaku Purev-Erdene</h3>
             <div className="MemberInfoCard">
               <h3>LinkedIn</h3>
-          <a href="https://linkedin.com/in/..." 
+          <a href="https://www.linkedin.com/in/khangerel-purev" 
           target="_blank" 
           rel="noopener">View Profile</a>
             </div>
@@ -124,14 +124,15 @@ function About() {
               <h3>Hunter Nguyen</h3>
             <div className="MemberInfoCard">
               <h3>LinkedIn</h3>
-          <a href="https://www.linkedin.com/in/hunter-nguyen-mm6/" 
+          <a href="https://www.linkedin.com/in/hunter-nguyen-mm6/
+          "
           target="_blank" 
           rel="noopener">View Profile</a>
             </div>
           </div>
 
           <div className="MemberCard">
-              <img src={`${import.meta.env.BASE_URL}Danijela.png`}
+              <img src={`${import.meta.env.BASE_URL}Dani.JPG`}
               className="MemberPhoto" />
               <h3>Danijela Cavic</h3>
             <div className="MemberInfoCard">
@@ -202,7 +203,7 @@ function About() {
 
             <div className="MemberInfoCard">
               <h3>LinkedIn</h3>
-          <a href="https://linkedin.com/in/..." 
+          <a href="https://www.linkedin.com/in/jaideep-deevi/..." 
           target="_blank" 
           rel="noopener">View Profile</a>
             </div>

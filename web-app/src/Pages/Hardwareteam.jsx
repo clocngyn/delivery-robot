@@ -26,21 +26,20 @@ function Hardwareteam() {
             <li>Ultrasonic Sensors x4</li>
             <li>DC-DC Converter x1</li>
             <li>Battery x1</li>
-            <li>GPS Module</li>
+            <li>GPS Module x1</li>
             <li>Wires & Connectors</li>
           </ul>
         </div>
       </section>
 
-      {/* Wiring Diagrams */}
+      {/* Circuit Diagrams */}
       <section className="HardwareWiring">
-        <h2>Wiring Diagram</h2>
+        <h2>Circuit Diagram</h2>
         <div className="RobotBoxes">
-          <h3>Wiring Design</h3>
+          <h3>Circuit Design</h3>
           <img
             className="HardwareImg"
-            src={`${import.meta.env.BASE_URL}WiringDiagram.png`}
-            alt="Hand-drawn wiring design for the robot electronics"
+            src={`${import.meta.env.BASE_URL}WiringDiagram2.jpeg`}
           />
         </div>
       </section>

@@ -67,6 +67,24 @@ nav ul li a:hover {
   color: #CE1126;
 }
 
+/* GitHub Nav Button */
+.GithubNav {
+  background-color: transparent;
+  color: #1f2937;                
+  padding: 0;                   
+  font-weight: 600;               
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;   
+}
+
+.GithubNav:hover {
+  color: #CE1126;              
+  background-color: transparent; 
+  transform: none;               
+  box-shadow: none;           
+}
+
 /* Home Page */
 
 /* Intro Section */
@@ -397,15 +415,75 @@ background: white;
 }
 
 /* Software Team Page */
-.SoftwareOverview {
-  margin-top: 1.5rem;
+.SoftwarePage {
+  animation: zoomIn 0.4s ease;
+}
+
+.SoftwareDiagrams {
   margin-bottom: 2rem;
+}
+
+.SoftwareDiagrams h2 {
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.SoftwareDiagramGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.SoftwareImg {
+  width: 100%;
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+
+/* Photos Page */
+.PhotosPage {
+  animation: zoomIn 0.4s ease;
+  padding-top: 1rem;
+}
+
+.PhotosPage h1 {
+  margin-bottom: 1.5rem;
+}
+
+.PhotosGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.PhotosGrid figure {
+  margin: 0;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+}
+
+.PhotosGrid img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.PhotosGrid figcaption {
+  padding: 0.75rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #4b5563;
 }
 
 /* Phone Settings */
 @media (max-width: 768px) {
 
-  /* Stack intro title and image vertically */
   .IntroTitle {
     flex-direction: column;
     padding: 20px;
@@ -423,25 +501,25 @@ background: white;
     height: auto;
   }
 
-  /* Stack info boxes to one column */
   .InfoBoxes {
     grid-template-columns: 1fr;
   }
 
-  /* Stack gallery to one column */
   .HomeGrid {
     grid-template-columns: 1fr;
   }
 
-  /* Stack design models to one column */
+  .PhotosGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .DesignModelGrid {
     grid-template-columns: 1fr;
     gap: 15px;
   }
 
-  /* Keep the 3D model tall on mobile so menus don't smother it */
   .DesignFrame {
-    height: 550px; 
+    height: 550px;
   }
 
   .DesignCard {
@@ -449,7 +527,6 @@ background: white;
     margin-bottom: 20px;
   }
 
-  /* Make explore buttons wrap */
   .IntroExploreGrid {
     flex-direction: column;
     align-items: center;

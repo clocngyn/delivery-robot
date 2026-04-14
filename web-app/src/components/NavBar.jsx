@@ -9,6 +9,12 @@ function NavBar() {
         <li><NavLink to="/Designteam">Design Team</NavLink></li>
         <li><NavLink to="/Hardwareteam">Hardware Team</NavLink></li>
         <li><NavLink to="/Softwareteam">Software Team</NavLink></li>
+        <li><NavLink to="/PhotoGallery">Photo Gallery</NavLink></li>
+        <li>
+          <a href="https://github.com/clocngyn/delivery-robot" target="_blank" rel="noopener noreferrer" className="GithubNav">
+            GitHub
+          </a>
+        </li>
       </ul>
     </nav>
   )

@@ -7,7 +7,7 @@ function Home() {
       {/* Intro + Description */}
       <section className = "IntroTitle">
         <div className = "IntroTitleText">
-          <h1> Food Delivery Robot</h1>
+          <h1> PIyber Truck</h1>
         </div>
         <img
           className = "HomeRobotImg"
@@ -62,7 +62,7 @@ function Home() {
           </figure>
           <figure>
             <img src = {`${import.meta.env.BASE_URL}gallery-2.png`}/>
-            <figcaption>Navigation test</figcaption>
+            <figcaption>Suspension Testing</figcaption>
           </figure>
           <figure>
             <img src = {`${import.meta.env.BASE_URL}gallery-3.png`} />

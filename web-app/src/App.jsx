@@ -7,21 +7,23 @@ import Hardwareteam from './Pages/Hardwareteam'
 import Softwareteam from './Pages/Softwareteam'
 import About from './Pages/About'
 import NavBar from './components/NavBar'
+import Photos from './Pages/Photos'
 
 function App() {
   return (
     <HashRouter>
- <div className="RobotWeb">
+ <div className = "RobotWeb">
   <header>
     <NavBar />
   </header>
   <main className = "RobotWebInfo">
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/Designteam" element={<Designteam />} />
-      <Route path="/Hardwareteam" element={<Hardwareteam />} />
-      <Route path="/Softwareteam" element={<Softwareteam />} />
-      <Route path="/About" element={<About />} />
+      <Route path="/" element = {<Home />} />
+      <Route path="/Designteam" element = {<Designteam />} />
+      <Route path="/Hardwareteam" element = {<Hardwareteam />} />
+      <Route path="/Softwareteam" element = {<Softwareteam />} />
+      <Route path="/About" element = {<About />} />
+      <Route path="/PhotoGallery" element={<Photos />} />
     </Routes>
   </main>
 </div>
