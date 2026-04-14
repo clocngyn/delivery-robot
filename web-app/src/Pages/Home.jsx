@@ -7,11 +7,11 @@ function Home() {
       {/* Intro + Description */}
       <section className = "IntroTitle">
         <div className = "IntroTitleText">
-          <h1> PIyber Truck</h1>
+          <h1> PIber Truck</h1>
         </div>
         <img
           className = "HomeRobotImg"
-          src = {`${import.meta.env.BASE_URL}robot-real.png`}
+          src = {`${import.meta.env.BASE_URL}SideView.jpeg`}
         />
       </section>
 
@@ -61,12 +61,12 @@ function Home() {
             <figcaption>Body Test Fitting</figcaption>
           </figure>
           <figure>
-            <img src = {`${import.meta.env.BASE_URL}gallery-2.png`}/>
+            <img src = {`${import.meta.env.BASE_URL}SuspensionTest.png`}/>
             <figcaption>Suspension Testing</figcaption>
           </figure>
           <figure>
-            <img src = {`${import.meta.env.BASE_URL}gallery-3.png`} />
-            <figcaption>Final design</figcaption>
+            <img src = {`${import.meta.env.BASE_URL}OpenLid.jpeg`} />
+            <figcaption>Top View</figcaption>
           </figure>
         </div>
       </section>
