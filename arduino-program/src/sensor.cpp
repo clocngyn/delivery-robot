@@ -14,9 +14,9 @@ SensorTable lastSense = {0, 0, 0, 0};
 
 void sense() { 
   // updates our latest check distances
-  lastSense.front = hc.dist(0);
-  lastSense.back  = hc.dist(1);
-  lastSense.left  = hc.dist(2);
+  lastSense.front = hc.dist(0); delay(10); // delay to lessen interference
+  lastSense.back  = hc.dist(1); delay(10);
+  lastSense.left  = hc.dist(2); delay(10);
   lastSense.right = hc.dist(3);
 
   /*
