@@ -5,14 +5,14 @@ let websocket;                                      // which is coming from the 
 
 window.addEventListener("load", onLoad)
 
+let map;
+let robotMarker;
+let mapStart = false;
 // call on load
 function onLoad() {
     initWebSocket()
-    // load the map
-    // load the controls
+    initMap()
 }
-
-
 
 // initalize websocket and listeners
 // this is called when 
@@ -38,9 +38,25 @@ function onClose(event) {
 }
 
 function onMessage(message) {
-    const data = JSON.parse(message.data);  // parse the data to easily index it,
-                                            // since we are using multiple sensors.
+    const data = JSON.parse(message.data);  // parse the data for easy use
 
+    
+                                           
+    if (data.lat && data.lng && data.lat !== 0) {                 // if we get the data
+        const newPos = [data.lat, data.lng];    // make pos
+        if (!mapStart) {                        // check we havent run this before
+            map.setView(newPos, 18);            // sets view close to our location
+            mapStart = true;
+        }
+        robotMarker.setLatLng(newPos);          // 
+    }
+
+    // set our telemetry elements
+    document.getElementById('rssiVal').innerText       = data.wifi;
+    document.getElementById('satVal').innerText        = data.sats;
+    document.getElementById('statusVal').innerText     = data.safe ? "ACTIVE" : "BLOCKED";
+    document.getElementById('statusVal').style.color   = data.safe ? "green" : "red";
+    
     console.log(data.status);
 }
 
@@ -65,4 +81,18 @@ function initControls() {
         button.onmouseup = stopMove;
         button.ontouchend = stopMove;
     });
+}
+
+function initMap() {
+    // 1. Initialize map on the 'map' div
+    map = L.map('map').setView([0, 0], 2); 
+
+    // 2. Load OpenStreetMap tiles
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '© OpenStreetMap'
+    }).addTo(map);
+
+    // 3. Create the robot marker (start at 0,0)
+    robotMarker = L.marker([0, 0]).addTo(map);
 }

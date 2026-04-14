@@ -1,4 +1,4 @@
-#include "robot.h"
+//#include "robot.h"
 #include "motordriver.h"
 
 // set the pins to output
@@ -25,7 +25,7 @@ void initMotorDriver() {
 
 // drive function mainly used to receive and interpret the websocket signals
 void drive(char direction) {
-    //testString = direction;
+    Serial.println(direction);
     if (direction == 'S') { // redundant guard statement
         stop();
         return;

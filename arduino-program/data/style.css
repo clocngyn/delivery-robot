@@ -1,4 +1,4 @@
-.dpad-container {
+.dpadContainer {
     display: grid;
     grid-template-columns: repeat(3, 80px);
     grid-template-rows: repeat(3, 80px);
@@ -25,13 +25,8 @@
     grid-row: 3;
     grid-column: 2;
 }
-.dpad-row {
-    display: flex;
-    justify-content: center;
-    gap: 10px; 
-    margin: 10px 0;
-}
-.dpad-button {
+
+.dpadButton {
     width: 80px;
     height: 80px;
     font-size: 24px;
@@ -52,10 +47,15 @@
     
     
 }
-.button-space {
-    width: 80px; 
-}
-.dpad-button:active {
+
+.dpadButton:active {
     transform: translateY(3px);
     /*box-shadow: 0 2px #2980b9;*/
+}
+
+.telemetryBar {
+    text-align: center;
+    padding: 10px;
+    background-color: #222;
+    color: white;
 }
