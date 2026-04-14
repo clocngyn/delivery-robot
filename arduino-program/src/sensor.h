@@ -2,11 +2,11 @@
 #ifndef SENSOR_H
 #define SENSOR_H
 
-const int triggerPin        = 5;
-const int frontEcho         = 18;
-const int rightEcho         = 19;
-const int leftEcho          = 21;
-const int backEcho          = 22;
+const int triggerPin        = 32;
+const int frontEcho         = 36;
+const int rightEcho         = 39;
+const int leftEcho          = 34;
+const int backEcho          = 35;
 
 // a way to transport a sweep of our sensors
 struct SensorTable {

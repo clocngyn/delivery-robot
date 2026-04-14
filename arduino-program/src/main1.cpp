@@ -15,9 +15,9 @@ bool    canDrive            = true;
 
 TinyGPSPlus GPS;
 
-// loop logic
+                // loop logic
 
-unsigned long lastGPSDebugTime = 0;
+                unsigned long lastGPSDebugTime = 0;
 
 // used in sensor algorithm
 unsigned long lastSensorTime = 0;
@@ -30,19 +30,28 @@ void changeDriveState(char robotDriveState, char &lastDriveState) {
   lastDriveState = robotDriveState;       //update state
 }
 
-void sendGPS();
+void sendTelemetry();
 
 void setup() {
-  Serial.begin(115200);                       // esp32 can read at 115200 bps
-  MotorSerial.begin(115200, SERIAL_8N1, 18, 19);  // opens the 2nd serial port to speak to 2nd esp
-  GPSSerial.begin(9600, SERIAL_8N1, 16, 17);    // gps needs another serial
+  pinMode(2, OUTPUT);
+  digitalWrite(2, HIGH);
+  Serial.begin(115200);                           // esp32 can read at 115200 bps
+  // (rx, tx)
+  MotorSerial.begin(9600, SERIAL_8N1, 25, 26);  // opens the 2nd serial port to speak to 2nd esp
+  GPSSerial.begin(9600, SERIAL_8N1, 16, 17);      // gps needs another serial
 
+  for(int i=0; i<10; i++) {
+    MotorSerial.println("HELLO FROM ESP1");
+    delay(100);
+  }
+  // starts wifi
   WiFi.begin("iPhone", "tset2sdkt5q4");       // (wifi name, password)
   while (WiFi.status() != WL_CONNECTED) {     // yield until wifi connected
     delay(500);
     Serial.print("."); 
   }
 
+  // renames the url
   if (MDNS.begin("deliveryrobot")) {
     Serial.println("mDNS responder started");
   } else {

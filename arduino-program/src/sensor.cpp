@@ -19,9 +19,26 @@ void sense() {
   lastSense.left  = hc.dist(2);
   lastSense.right = hc.dist(3);
 
+  /*
+  Serial.print("front: ");
+  Serial.print(lastSense.front);
+  Serial.print("    right: ");
+  Serial.print(lastSense.right);
+  Serial.print("    backwards: ");
+  Serial.print(lastSense.back);
+  Serial.print("    left: ");
+  Serial.println(lastSense.left);*/
 
-  if (lastSense.front < cautionDistance) {
+  if (lastSense.front < cautionDistance && lastSense.front > 0.00) {
     canDrive = false;
+  } else {
+    canDrive = true;
+  }
+
+  if (lastSense.right < 30 || lastSense.left < 30) {
+    driveSpeed = 125;
+  } else {
+    driveSpeed = 255;
   }
 }
 

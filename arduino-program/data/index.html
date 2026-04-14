@@ -6,30 +6,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no", charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 </head>
 
 <body>
-    <div class = "card"></div>
+
+    <!-- leaflet finds elements with id map and dist display and injects the proper html -->
+    <div class="card">
+        <div id="map" style="height: 400px; border-radius: 8px;"></div>
+        <div id="dist-display" style="padding: 10px; text-align: center;">Waiting for sensors...</div>
+    </div>
+
+    <div class="telemetryBar">
+        <span>Signal: <b id="rssi-val">0</b> dBm</span> |
+        <span>Status: <b id="status-val">READY</b></span> |
+        <span>Sats: <b id="sat-val">0</b></span>
+    </div>
 
 
-
-    <div class="dpad-container">
+    <div class="dpadContainer">
     <!-- hard coding the symbols so they dont turn into emojis -->
-    <button class="dpad-button" id="up">&#9650;&#xFE0E;</button>
-    <button class="dpad-button" id="left">&#9664;&#xFE0E;</button>
-    <button class="dpad-button" id="right">&#9654;&#xFE0E;</button>
-    <button class="dpad-button" id="down">&#9660;&#xFE0E;</button>
+    <button class="dpadButton" id="up">&#9650;&#xFE0E;</button>
+    <button class="dpadButton" id="left">&#9664;&#xFE0E;</button>
+    <button class="dpadButton" id="right">&#9654;&#xFE0E;</button>
+    <button class="dpadButton" id="down">&#9660;&#xFE0E;</button>
     </div>
 
 
 </body>
 
-<script src="/websocket.js"></script>
+
 <script>
     // for every dpad button class object, open this connection
     // this function is used to get a more responsive button press
     // 
-    document.querySelectorAll('.dpad-button').forEach(button => {
+    document.querySelectorAll('.dpadButton').forEach(button => {
         button.addEventListener('touchstart', () => {
             button.style.transform = "translateY(4px)";
             button.style.boxShadow = "none";
@@ -42,5 +53,6 @@
 </script>
 
 
-
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="/websocket.js"></script> </body>
 </html>
