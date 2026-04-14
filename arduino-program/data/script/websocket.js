@@ -51,10 +51,11 @@ function onMessage(message) {
         robotMarker.setLatLng(newPos);          // 
     }
 
-    // You can also update sensor distance text here
-    if (data.frontDist) {
-        document.getElementById('dist-display').innerText = data.frontDist + " cm";
-    }
+    // set our telemetry elements
+    document.getElementById('rssiVal').innerText       = data.wifi;
+    document.getElementById('satVal').innerText        = data.sats;
+    document.getElementById('statusVal').innerText     = data.safe ? "ACTIVE" : "BLOCKED";
+    document.getElementById('statusVal').style.color   = data.safe ? "green" : "red";
     
     console.log(data.status);
 }

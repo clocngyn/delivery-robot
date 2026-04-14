@@ -52,3 +52,10 @@
     transform: translateY(3px);
     /*box-shadow: 0 2px #2980b9;*/
 }
+
+.telemetryBar {
+    text-align: center;
+    padding: 10px;
+    background-color: #222;
+    color: white;
+}
