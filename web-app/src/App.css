@@ -1,42 +1,539 @@
-#root {
-  max-width: 1280px;
+/* Allos us to use fonts from Google's servers*/
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Montserrat:wght@700&family=Poppins:wght@600;700&display=swap');
+
+
+/* Website Styles */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #F3F4F6;
+  color: #1f2937;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Title Fonts */
+h1, h2, h3 {
+  font-family: 'Poppins', sans-serif;
+  color: #111827;
+  margin-top: 0;
+}
+
+/* Website Layout */
+.RobotWebInfo {
+  max-width: 1100px;
   margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.RobotWebInfo, .AboutPage, .SoftwareOverview{
+  animation: zoomIn 0.4s ease;
+}
+/* Allows for each page to fade in smootly when moving to the next page */
+@keyframes zoomIn {
+  from { opacity: 0; transform: scale(0.97); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Navbar */
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.2rem 0;
+  background-color: #ffffff;
+  border-bottom: 2px solid #CE1126;
+}
+
+nav ul {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li a {
+  color: #1f2937;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: #CE1126;
+}
+
+/* GitHub Nav Button */
+.GithubNav {
+  background-color: transparent;
+  color: #1f2937;                
+  padding: 0;                   
+  font-weight: 600;               
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;   
+}
+
+.GithubNav:hover {
+  color: #CE1126;              
+  background-color: transparent; 
+  transform: none;               
+  box-shadow: none;           
+}
+
+/* Home Page */
+
+/* Intro Section */
+.IntroTitle {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  margin-bottom: 4rem;
+  background: white;
+  padding: 40px;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+}
+
+.IntroTitleText {
+  flex: 1;
+}
+
+.HomeRobotImg {
+  width: 400px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* Info Boxes */
+.InfoBoxes {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+}
+
+.RobotBoxes {
+  background: white;
   padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid white; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.RobotBoxes h3 {
+  color: #111827; 
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.25rem;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #f3f4f6;
+  padding-bottom: 8px;
+}
+
+.RobotBoxes ol {
+  padding-left: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.RobotBoxes ul {
+  padding-left: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.RobotBoxes:hover {
+  border: 1px solid #ff3131; 
+  box-shadow: 0 5px 15px rgba(255, 49, 49, 0.15);
+}
+
+/* Home Photos */
+.HomePhotos {
+  margin-bottom: 2rem;
+}
+
+.HomeGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 20px;                             
+  margin-top: 1.5rem;
+}
+
+.HomeGrid figure {
+background: white;
+  padding: 12px; 
+  border-radius: 12px;
+  border: 1px solid transparent;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+.HomeGrid figure:hover {
+ border:1px solid #ff3131;
+}
+
+.HomeGrid img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 6px; 
+  display: block;
+}
+
+.HomeGrid figcaption {
+  padding-top: 10px;
   text-align: center;
+  font-weight: 500;
+  color: #4b5563;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Explore links */
+.IntroExploreGrid {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.ExploreButton {
+  padding: 0.8rem 1.5rem;
+  background: white;
+  border: 2px solid #e5e7eb;
+  border-radius: 50px;
+  color: #1f2937;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.ExploreButton:hover {
+  border-color: #CE1126;
+  color: #CE1126;
+  background: #fff5f5;
+}
+
+/* About Page */
+.AboutPage {
+  padding: 2rem 0;
+}
+
+.AboutText {
+  color: #4b5563;
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+/* Team sections */
+.TeamSection {
+  margin-bottom: 3rem;
+}
+
+.TeamSection h2 {
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+/* Member grid */
+.MemberGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+/* Member card */
+.MemberCard {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.MemberPhoto {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+.MemberCard h3 {
+  font-size: 1.rem;
+  color: #1f2937;
+  margin-bottom: 0.25rem;
+}
+
+.MemberCard p {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+/* Hidden overlay card */
+.MemberInfoCard {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+  border-radius: 8px;
+}
+
+/* 1. This adds the red outline to the card itself on hover */
+.MemberCard:hover {
+  border: 1px solid #ff3131;
+  box-shadow: 0 5px 15px rgba(255, 49, 49, 0.15);
+}
+
+/* 2. Show the back-side info on hover */
+.MemberCard:hover .MemberInfoCard {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* 3. Hide the front-side photo/text on hover */
+.MemberPhoto, .MemberCard h3, .MemberCard p {
+  transition: opacity 0.3s ease;
+}
+
+/* LinkedIn link hover color */
+.MemberInfoCard a:hover {
+  color: #ff3131;
+}
+
+/* Design Page */
+
+.DesignOverview {
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+/* 3D Models section */
+.DesignModels {
+  margin-bottom: 2rem;
+}
+
+.DesignModels h2 {
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+/* Makes the two models sit on top of each other */
+.DesignModelGrid {
+  display: grid;
+  grid-template-columns: 1fr; 
+  gap: 30px; 
+  margin-top: 1rem;
+}
+
+.DesignCard {
+  background: white;
+  padding: 15px; 
+  border-radius: 12px;
+  border: 1px solid transparent; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: all 0.4s ease;
+}
+
+.DesignCard:hover {
+  border: 1px solid #ff3131;
+  box-shadow: 0 5px 15px rgba(255, 49, 49, 0.15);
+}
+
+.DesignCard h3 {
+  margin: 10px 0 15px 10px; /* Aligns the "Chassis" title inside the card */
+}
+
+/* Controls the iframe */
+.DesignFrame {
+  width: 100%;
+  height: 750px;
+  border-radius: 8px;
+  border: none;
+  display: block;
+}
+
+/* Hardware Team Page */
+.HardwareOverview {
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+/* Materials section */
+.HardwareMaterials {
+  margin-bottom: 2rem;
+}
+
+.HardwareMaterials h2 {
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.HardwareMaterials ul {
+  padding-left: 1.5rem;
+  margin-top: 0.5rem;
+  line-height: 2;
+}
+
+/* Wiring section */
+.HardwareWiring {
+  margin-bottom: 2rem;
+}
+
+.HardwareWiring h2 {
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+/* Wiring image */
+.HardwareImg {
+  width: 100%;
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+
+/* Software Team Page */
+.SoftwarePage {
+  animation: zoomIn 0.4s ease;
+}
+
+.SoftwareDiagrams {
+  margin-bottom: 2rem;
+}
+
+.SoftwareDiagrams h2 {
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.SoftwareDiagramGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.SoftwareImg {
+  width: 100%;
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+
+/* Photos Page */
+.PhotosPage {
+  animation: zoomIn 0.4s ease;
+  padding-top: 1rem;
+}
+
+.PhotosPage h1 {
+  margin-bottom: 1.5rem;
+}
+
+.PhotosGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.PhotosGrid figure {
+  margin: 0;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+}
+
+.PhotosGrid img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.PhotosGrid figcaption {
+  padding: 0.75rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+/* Phone Settings */
+@media (max-width: 768px) {
+
+  .IntroTitle {
+    flex-direction: column;
+    padding: 20px;
+    text-align: center;
+    gap: 1.5rem;
   }
-  to {
-    transform: rotate(360deg);
+
+  h1 {
+    font-size: 2.2rem;
   }
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+  .HomeRobotImg {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
   }
-}
 
-.card {
-  padding: 2em;
-}
+  .InfoBoxes {
+    grid-template-columns: 1fr;
+  }
 
-.read-the-docs {
-  color: #888;
+  .HomeGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .PhotosGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .DesignModelGrid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .DesignFrame {
+    height: 550px;
+  }
+
+  .DesignCard {
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+  .IntroExploreGrid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .ExploreButton {
+    width: 80%;
+    text-align: center;
+  }
 }
