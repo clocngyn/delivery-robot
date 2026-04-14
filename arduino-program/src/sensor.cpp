@@ -13,11 +13,22 @@ SensorTable lastSense = {0, 0, 0, 0};
 
 
 void sense() { 
+
   // updates our latest check distances
-  lastSense.front = hc.dist(0);
-  lastSense.back  = hc.dist(1);
-  lastSense.left  = hc.dist(2);
-  lastSense.right = hc.dist(3);
+  static int sensorId = 0;
+  // trigger 1 sensor and get reading
+  float dist = hc.dist(sensorId);
+  
+  // if we get an actual reading, do an update
+  if (dist > 0) {
+      if (sensorId == 0) lastSense.front = dist;
+      if (sensorId == 1) lastSense.back  = dist;
+      if (sensorId == 2) lastSense.left  = dist;
+      if (sensorId == 3) lastSense.right = dist;
+  }
+
+  // increment index 
+  sensorId = (sensorId + 1) % 4;
 
   /*
   Serial.print("front: ");
