@@ -12,7 +12,7 @@ function About() {
         <div className='MemberGrid'>
           
           <div className="MemberCard">
-              <img src={`${import.meta.env.BASE_URL}Vincent.png`}
+              <img src={`${import.meta.env.BASE_URL}vincent.png`}
               className="MemberPhoto" />
               <h3>Vincent Nguyen</h3>
               <p>Project Manager</p>
@@ -25,7 +25,7 @@ function About() {
           </div>
 
           <div className="MemberCard">
-              <img src={`${import.meta.env.BASE_URL}Ted.png`}
+              <img src={`${import.meta.env.BASE_URL}ted.png`}
               className="MemberPhoto" />
               <h3>Taehyun Um</h3>
               <p>Design Lead</p>
@@ -51,7 +51,7 @@ function About() {
           </div>
 
           <div className="MemberCard">
-              <img src={`${import.meta.env.BASE_URL}Chris.png`}
+              <img src={`${import.meta.env.BASE_URL}chris.png`}
               className="MemberPhoto" />
               <h3>Chris Nguyen</h3>
               <p>Software Lead</p>
@@ -71,7 +71,7 @@ function About() {
         <div className='MemberGrid'>
 
           <div className="MemberCard">
-              <img src={`${import.meta.env.BASE_URL}Khaku.png`}
+              <img src={`${import.meta.env.BASE_URL}khaku.png`}
               className="MemberPhoto" />
               <h3>Khaku Purev-Erdene</h3>
             <div className="MemberInfoCard">
@@ -119,7 +119,7 @@ function About() {
           </div>
            
           <div className="MemberCard">
-              <img src={`${import.meta.env.BASE_URL}Hunter.png`}
+              <img src={`${import.meta.env.BASE_URL}hunter.png`}
               className="MemberPhoto" />
               <h3>Hunter Nguyen</h3>
             <div className="MemberInfoCard">
@@ -150,7 +150,7 @@ function About() {
         <div className='MemberGrid'>
 
           <div className="MemberCard">
-              <img src={`${import.meta.env.BASE_URL}Lisette.png`}
+              <img src={`${import.meta.env.BASE_URL}lisette.png`}
               className="MemberPhoto" />
               <h3>Lisette Meza</h3>
             <div className="MemberInfoCard">
@@ -162,7 +162,7 @@ function About() {
           </div>
 
           <div className="MemberCard">
-              <img src={`${import.meta.env.BASE_URL}Dishant.png`}
+              <img src={`${import.meta.env.BASE_URL}dishant.png`}
               className="MemberPhoto" />
               <h3>Dishant Bhagwakar</h3>
             <div className="MemberInfoCard">
@@ -174,7 +174,7 @@ function About() {
           </div>
              
           <div className="MemberCard">
-              <img src={`${import.meta.env.BASE_URL}Parmeet.png`}
+              <img src={`${import.meta.env.BASE_URL}parmeet.png`}
               className="MemberPhoto" />
               <h3>Parmeet Singh</h3>
             <div className="MemberInfoCard">
@@ -196,7 +196,7 @@ function About() {
         <div className='MemberGrid'>
 
           <div className="MemberCard">
-              <img src={`${import.meta.env.BASE_URL}Jaideep.png`}
+              <img src={`${import.meta.env.BASE_URL}jaideep.png`}
               className="MemberPhoto" />
               <h3>Jaideep Deevi</h3>
 
