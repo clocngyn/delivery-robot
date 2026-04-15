@@ -164,8 +164,8 @@ nav ul li a:hover {
 }
 
 .HomeGrid figure {
-background: white;
-  padding: 12px; 
+  background: white;
+  padding: 0;           
   border-radius: 12px;
   border: 1px solid transparent;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
@@ -173,6 +173,7 @@ background: white;
   display: flex;
   flex-direction: column;
   margin: 0;
+  overflow: hidden;  
 }
 
 .HomeGrid figure:hover {
@@ -181,14 +182,18 @@ background: white;
 
 .HomeGrid img {
   width: 100%;
-  height: 200px;
+  height: 335px;
   object-fit: cover;
-  border-radius: 6px; 
+  object-position: center;
+  border-radius: 0;
   display: block;
 }
 
 .HomeGrid figcaption {
   padding-top: 10px;
+  padding-bottom: 14px;
+  padding-left: 10px;
+  padding-right: 10px;
   text-align: center;
   font-weight: 500;
   color: #4b5563;
@@ -484,6 +489,44 @@ background: white;
 /* Phone Settings */
 @media (max-width: 768px) {
 
+  /* Main Settings */
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  .RobotWebInfo {
+    padding: 20px 16px;
+  }
+
+  /* Navbar */
+  nav {
+    padding: 0.8rem 16px;
+  }
+
+  nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.6rem 1.2rem;
+  }
+
+  nav ul li a {
+    font-size: 0.85rem;
+  }
+
+  /* Fonts */
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+
+  /* Intro */
   .IntroTitle {
     flex-direction: column;
     padding: 20px;
@@ -491,49 +534,89 @@ background: white;
     gap: 1.5rem;
   }
 
-  h1 {
-    font-size: 2.2rem;
-  }
-
   .HomeRobotImg {
     width: 100%;
-    max-width: 300px;
+    max-width: 100%;
     height: auto;
   }
 
+  /* Info Boxes */
   .InfoBoxes {
     grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 2rem;
   }
 
+  .RobotBoxes {
+    padding: 1.2rem;
+  }
+
+  /* Home Photos */
   .HomeGrid {
     grid-template-columns: 1fr;
+    gap: 16px;
   }
 
-  .PhotosGrid {
+  .HomeGrid img {
+    height: 220px;
+  }
+
+  /* Explore Buttons */
+  .IntroExploreGrid {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .ExploreButton {
+    width: 85%;
+    text-align: center;
+  }
+
+  /* About / Member Grid */
+  .MemberGrid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
   }
 
-  .DesignModelGrid {
-    grid-template-columns: 1fr;
-    gap: 15px;
+  .MemberCard {
+    padding: 1rem;
   }
 
+  .MemberPhoto {
+    width: 70px;
+    height: 70px;
+  }
+
+  /* Design Page */
   .DesignFrame {
-    height: 550px;
+    height: 400px;
   }
 
   .DesignCard {
     padding: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
   }
 
-  .IntroExploreGrid {
-    flex-direction: column;
-    align-items: center;
+  /* Software Diagrams */
+  .SoftwareDiagramGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
 
-  .ExploreButton {
-    width: 80%;
-    text-align: center;
+  /* Photos Page */
+  .PhotosGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  .PhotosGrid img {
+    height: 150px;
+  }
+
+  /* Hardware */
+  .HardwareImg {
+    width: 100%;
+    height: auto;
   }
 }
