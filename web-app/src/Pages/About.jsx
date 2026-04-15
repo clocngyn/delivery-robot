@@ -124,8 +124,7 @@ function About() {
               <h3>Hunter Nguyen</h3>
             <div className="MemberInfoCard">
               <h3>LinkedIn</h3>
-          <a href="https://www.linkedin.com/in/hunter-nguyen-mm6/
-          "
+          <a href="https://www.linkedin.com/in/hunter-nguyen-mm6/"
           target="_blank" 
           rel="noopener">View Profile</a>
             </div>
