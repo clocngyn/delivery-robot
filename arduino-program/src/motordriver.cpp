@@ -33,6 +33,7 @@ void drive(char direction) {
         return;
     }
 
+    // sets pins based on the received command
     if (direction == CMD_FORWARD) {
         digitalWrite(motor1A_in1, HIGH);
         digitalWrite(motor1A_in2, LOW);
@@ -86,6 +87,7 @@ void stop() {
     digitalWrite(motor2B_in2, LOW);
 }
 
+// changes the power output of all motors
 void setSpeed(int speedValue) {
     speedValue = constrain(speedValue, 0, 255); // clamp 
     analogWrite(motor1A_pwm, speedValue);

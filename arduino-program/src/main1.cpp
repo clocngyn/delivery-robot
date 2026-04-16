@@ -74,17 +74,13 @@ void setup() {
   Serial.println("Setup done");
 }
 
-
+// runs on loop listening for drive commands and sending any data it picks up to websocket
 void loop() {
   webSocket.cleanupClients();     // cleans up disconnected clients
 
-  
-  // use this if to delay sensor calls asynchronously
-  
   unsigned long currentTime = millis();
   static int lastDriveSpeed = driveSpeed;
-  
-  
+  // asynchronously runs our logic
   if (currentTime - lastSensorTime >= sensorInterval) {
     sense();
 
@@ -106,10 +102,7 @@ void loop() {
         lastDriveSpeed = driveSpeed;
     }
     lastSensorTime = currentTime; // Reset the timer
-  }
-
-  
-
+  }  
 
   // debug print, makes sure gps serial was getting signal in the first place
   /*
@@ -130,10 +123,11 @@ void loop() {
   }
   
   //Serial.println(testString);
-  delay(20); 
+  //delay(20); 
 }
 
 
+// sends data to our client
 void sendTelemetry() {
   JsonDocument doc;
   
@@ -148,8 +142,9 @@ void sendTelemetry() {
   doc["spd"]  = driveSpeed;             // current speed 
   doc["sats"] = GPS.satellites.value(); // satellites
 
+
   String jsonOutput;
-  serializeJson(doc, jsonOutput);
+  serializeJson(doc, jsonOutput); // turns doc into json for sending to websocket
   
   // send to websocket, ESPAsyncWebServer function, triggers onMessage in websocket
   webSocket.textAll(jsonOutput); 
