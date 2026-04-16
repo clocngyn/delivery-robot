@@ -31,7 +31,7 @@ function Designteam() {
 
           {/* Model 2 */}
           <div className='DesignCard'>
-            <h3> Chasis + Suspension</h3>
+            <h3> Chassis + Suspension</h3>
             <iframe
               className="DesignFrame"
               src="https://mycsu770.autodesk360.com/shares/public/SH90d2dQT28d5b6028110ddcc53b9dd688cd?mode=embed"

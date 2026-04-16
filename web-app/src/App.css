@@ -425,24 +425,27 @@ nav ul li a:hover {
 }
 
 .SoftwareDiagrams {
+  margin-top: 3.5rem;    
   margin-bottom: 2rem;
 }
 
 .SoftwareDiagrams h2 {
+  margin-top: 0rem;
   margin-bottom: 1rem;
   padding-bottom: 0.5rem;
   border-bottom: 2px solid #e5e7eb;
 }
 
 .SoftwareDiagramGrid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;          
+  flex-direction: column;
   gap: 1.5rem;
   margin-top: 1rem;
 }
 
 .SoftwareImg {
   width: 100%;
+  height: auto;
   border-radius: 8px;
   margin-top: 1rem;
 }
@@ -555,10 +558,12 @@ nav ul li a:hover {
   .HomeGrid {
     grid-template-columns: 1fr;
     gap: 16px;
+    justify-items: center;
   }
 
   .HomeGrid img {
     height: 220px;
+    max-width: 420px;
   }
 
   /* Explore Buttons */

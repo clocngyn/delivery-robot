@@ -4,7 +4,7 @@ function About() {
   return(
     <div className='AboutPage'>
       <h1>About the Team</h1>
-      <p className='AboutText'>Meet the students behind the Food Delivery Robot.</p>
+      <p className='AboutText'>Meet the students behind the PIber Truck.</p>
 
       {/* Team Leads */}
       <section className='TeamSection'>
