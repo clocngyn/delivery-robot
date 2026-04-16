@@ -12,7 +12,8 @@
 int     driveSpeed          = 255;
 char    robotDriveState     = 'S';
 String  testString          = "";
-bool    canDrive            = true;
+bool    canDriveF           = true;
+bool    canDriveB           = true;
 
 TinyGPSPlus GPS;
 
@@ -40,7 +41,7 @@ void setup() {
   Serial.begin(115200);                           // esp32 can read at 115200 bps
   // (rx, tx)
   //MotorSerial.begin(9600, SERIAL_8N1, 25, 26);  // opens the 2nd serial port to speak to 2nd esp
-  GPSSerial.begin(9600, SERIAL_8N1, 16, 17);      // gps needs another serial
+  GPSSerial.begin(115200, SERIAL_8N1, 16, 17);      // gps needs another serial
 
   // starts wifi
   WiFi.begin("iPhone", "tset2sdkt5q4");       // (wifi name, password)
@@ -86,8 +87,12 @@ void loop() {
 
     static char lastDriveState = 'S'; // records the last state
     // changes drive direction
-    if (!canDrive && robotDriveState == 'F') {  // if cant drive and going forward, stop
-      if (lastDriveState != 'S') { // force stop if not stopped
+    if (!canDriveF && robotDriveState == 'F') {   // if cant drive and going forward, stop
+      if (lastDriveState != 'S') {                // force stop if not stopped
+        changeDriveState('S', lastDriveState);
+      }
+    } else if (!canDriveB && robotDriveState == 'B') {  // same for backwards
+      if (lastDriveState != 'S') { 
         changeDriveState('S', lastDriveState);
       }
     } else if (robotDriveState != lastDriveState) {     // if can drive and in a new state
@@ -105,12 +110,12 @@ void loop() {
   }  
 
   // debug print, makes sure gps serial was getting signal in the first place
-  /*
+  
   while (GPSSerial.available() > 0) {
     char c = GPSSerial.read();
     Serial.print(c); // This prints raw NMEA sentences
     GPS.encode(c);
-  }*/
+  }
 
   // sends info to websocket, otherwise checks how many satellites
   if (GPS.location.isUpdated()) {
@@ -123,7 +128,7 @@ void loop() {
   }
   
   //Serial.println(testString);
-  //delay(20); 
+  delay(20); 
 }
 
 
@@ -138,7 +143,8 @@ void sendTelemetry() {
 
   // other metrics
   doc["wifi"] = WiFi.RSSI();            // wifi 
-  doc["safe"] = canDrive;               // if the robot can drive
+  doc["safeF"] = canDriveF;               // if the robot can drive forward
+  doc["safeB"] = canDriveB;               // if the robot can drive backward
   doc["spd"]  = driveSpeed;             // current speed 
   doc["sats"] = GPS.satellites.value(); // satellites
 

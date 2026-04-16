@@ -1,25 +1,21 @@
 // this file is dedicated to helper functions that control the motordrivers
 
-//#include "robot.h"
+#include "robot.h"
 #include "motordriver.h"
 
 // set the pins to output
 void initMotorDriver() {
     pinMode(motor1A_in1, OUTPUT);
     pinMode(motor1A_in2, OUTPUT);
-    pinMode(motor1A_pwm, OUTPUT);
     
     pinMode(motor1B_in1, OUTPUT);
     pinMode(motor1B_in2, OUTPUT);
-    pinMode(motor1B_pwm, OUTPUT);
 
     pinMode(motor2A_in1, OUTPUT);
     pinMode(motor2A_in2, OUTPUT);
-    pinMode(motor2A_pwm, OUTPUT);
     
     pinMode(motor2B_in1, OUTPUT);
     pinMode(motor2B_in2, OUTPUT);
-    pinMode(motor2B_pwm, OUTPUT);
     
     //pinMode(stbyPin, OUTPUT);
     //digitalWrite(stbyPin, HIGH); //keeps the motor active
@@ -35,41 +31,40 @@ void drive(char direction) {
 
     // sets pins based on the received command
     if (direction == CMD_FORWARD) {
-        digitalWrite(motor1A_in1, HIGH);
+        analogWrite(motor1A_in1, driveSpeed);
         digitalWrite(motor1A_in2, LOW);
-        digitalWrite(motor1B_in1, HIGH);
+        analogWrite(motor1B_in1, driveSpeed);
         digitalWrite(motor1B_in2, LOW);
-        digitalWrite(motor2A_in1, HIGH);
+        analogWrite(motor2A_in1, driveSpeed);
         digitalWrite(motor2A_in2, LOW);
-        digitalWrite(motor2B_in1, HIGH);
+        analogWrite(motor2B_in1, driveSpeed);
         digitalWrite(motor2B_in2, LOW);
     } else if (direction == CMD_BACKWARD) {
         digitalWrite(motor1A_in1, LOW);
-        digitalWrite(motor1A_in2, HIGH);
+        analogWrite(motor1A_in2, driveSpeed);
         digitalWrite(motor1B_in1, LOW);
-        digitalWrite(motor1B_in2, HIGH);
+        analogWrite(motor1B_in2, driveSpeed);
         digitalWrite(motor2A_in1, LOW);
-        digitalWrite(motor2A_in2, HIGH);
+        analogWrite(motor2A_in2, driveSpeed);
         digitalWrite(motor2B_in1, LOW);
-        digitalWrite(motor2B_in2, HIGH);
-    } else if (direction == CMD_LEFT) {
-        digitalWrite(motor1A_in1, HIGH);
+        analogWrite(motor2B_in2, driveSpeed);
+    } else if (direction == CMD_LEFT) {         // turns are always constant speed
+        analogWrite(motor1A_in1, 255);
         digitalWrite(motor1A_in2, LOW);
         digitalWrite(motor1B_in1, LOW);
-        digitalWrite(motor1B_in2, HIGH);
-
-        digitalWrite(motor2A_in1, HIGH);
+        analogWrite(motor1B_in2, 255);
+        analogWrite(motor2A_in1, 255);
         digitalWrite(motor2A_in2, LOW);
         digitalWrite(motor2B_in1, LOW);
-        digitalWrite(motor2B_in2, HIGH);
+        analogWrite(motor2B_in2, 255);
     } else if (direction == CMD_RIGHT) {
         digitalWrite(motor1A_in1, LOW);
-        digitalWrite(motor1A_in2, HIGH);
-        digitalWrite(motor1B_in1, HIGH);
+        analogWrite(motor1A_in2, 255);
+        analogWrite(motor1B_in1, 255);
         digitalWrite(motor1B_in2, LOW);
         digitalWrite(motor2A_in1, LOW);
-        digitalWrite(motor2A_in2, HIGH);
-        digitalWrite(motor2B_in1, HIGH);
+        analogWrite(motor2A_in2, 255);
+        analogWrite(motor2B_in1, 255);
         digitalWrite(motor2B_in2, LOW);
     }
 }
@@ -87,13 +82,9 @@ void stop() {
     digitalWrite(motor2B_in2, LOW);
 }
 
-// changes the power output of all motors
+// changes the power output of the motors
 void setSpeed(int speedValue) {
-    speedValue = constrain(speedValue, 0, 255); // clamp 
-    analogWrite(motor1A_pwm, speedValue);
-    analogWrite(motor1B_pwm, speedValue);
-    analogWrite(motor2A_pwm, speedValue);
-    analogWrite(motor2B_pwm, speedValue);
+    driveSpeed = constrain(speedValue, 0, 255); // clamp 
 }
 
 
