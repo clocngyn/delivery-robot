@@ -1,3 +1,6 @@
+// this file contains the initialization of the sensor
+// and the sense() function, handling the some of the reaction logic
+
 #include <Arduino.h>
 #include <HCSR04.h>
 #include "robot.h"
@@ -30,7 +33,7 @@ void sense() {
   // increment index 
   sensorId = (sensorId + 1) % 4;
 
-  /*
+  /*  test prints
   Serial.print("front: ");
   Serial.print(lastSense.front);
   Serial.print("    right: ");
@@ -38,7 +41,8 @@ void sense() {
   Serial.print("    backwards: ");
   Serial.print(lastSense.back);
   Serial.print("    left: ");
-  Serial.println(lastSense.left);*/
+  Serial.println(lastSense.left);
+  */
 
   if (lastSense.front < cautionDistance && lastSense.front > 0.00) {
     canDrive = false;

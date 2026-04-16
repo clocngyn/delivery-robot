@@ -1,3 +1,5 @@
+// this file is dedicated to helper functions that control the motordrivers
+
 //#include "robot.h"
 #include "motordriver.h"
 
@@ -26,7 +28,7 @@ void initMotorDriver() {
 // drive function mainly used to receive and interpret the websocket signals
 void drive(char direction) {
     Serial.println(direction);
-    if (direction == 'S') { // redundant guard statement
+    if (direction == 'S') { // guard 
         stop();
         return;
     }
@@ -54,6 +56,7 @@ void drive(char direction) {
         digitalWrite(motor1A_in2, LOW);
         digitalWrite(motor1B_in1, LOW);
         digitalWrite(motor1B_in2, HIGH);
+
         digitalWrite(motor2A_in1, HIGH);
         digitalWrite(motor2A_in2, LOW);
         digitalWrite(motor2B_in1, LOW);

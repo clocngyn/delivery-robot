@@ -1,5 +1,6 @@
 #include "robot.h"
 #include "sensor.h"
+#include "motordriver.h"
 
 #include <ESPmDNS.h> // used to name the ip
 #include <TinyGPS++.h>
@@ -15,9 +16,9 @@ bool    canDrive            = true;
 
 TinyGPSPlus GPS;
 
-                // loop logic
+// loop logic
 
-                unsigned long lastGPSDebugTime = 0;
+unsigned long lastGPSDebugTime = 0;
 
 // used in sensor algorithm
 unsigned long lastSensorTime = 0;
@@ -25,8 +26,9 @@ const int sensorInterval = 60; // 60ms between thoughts
 
 // helper to send change and send all drive state references
 void changeDriveState(char robotDriveState, char &lastDriveState) {
-  Serial.println(robotDriveState);        // just for confirmation on esp1 serial monitor
-  MotorSerial.print(robotDriveState);         // printing to serial 2 sends the actual char to esp2
+  //Serial.println(robotDriveState);        // just for confirmation on esp1 serial monitor
+  //MotorSerial.print(robotDriveState);         // printing to serial 2 sends the actual char to esp2
+  drive(robotDriveState);
   lastDriveState = robotDriveState;       //update state
 }
 
@@ -37,13 +39,9 @@ void setup() {
   digitalWrite(2, HIGH);
   Serial.begin(115200);                           // esp32 can read at 115200 bps
   // (rx, tx)
-  MotorSerial.begin(9600, SERIAL_8N1, 25, 26);  // opens the 2nd serial port to speak to 2nd esp
+  //MotorSerial.begin(9600, SERIAL_8N1, 25, 26);  // opens the 2nd serial port to speak to 2nd esp
   GPSSerial.begin(9600, SERIAL_8N1, 16, 17);      // gps needs another serial
 
-  for(int i=0; i<10; i++) {
-    MotorSerial.println("HELLO FROM ESP1");
-    delay(100);
-  }
   // starts wifi
   WiFi.begin("iPhone", "tset2sdkt5q4");       // (wifi name, password)
   while (WiFi.status() != WL_CONNECTED) {     // yield until wifi connected
@@ -61,13 +59,17 @@ void setup() {
   String connectMessage = "\nConnected! IP address: " + WiFi.localIP().toString();
   Serial.println(connectMessage);
 
-  // begin littleFS
+  // begin littleFS, littleFS sets up data structures to the flash memory 
+  // allowing for data management, this gives us our web interface html file
   if(!LittleFS.begin(true)) {
     Serial.println("LittleFS Mount Failed");
   } else {
     Serial.println("LittleFS Mount Success");
   }
+
+  // init sets pins
   webSocketInit();
+  initMotorDriver();
   
   Serial.println("Setup done");
 }
@@ -88,18 +90,19 @@ void loop() {
 
     static char lastDriveState = 'S'; // records the last state
     // changes drive direction
-    if (!canDrive && robotDriveState != 'S') {  // if cant drive and not stopped
-      if (lastDriveState != 'S') {              // if last state is not stopped, change to stop
+    if (!canDrive && robotDriveState == 'F') {  // if cant drive and going forward, stop
+      if (lastDriveState != 'S') { // force stop if not stopped
         changeDriveState('S', lastDriveState);
       }
-    } else if (canDrive && robotDriveState != lastDriveState) {     // if can drive and in a new state
+    } else if (robotDriveState != lastDriveState) {     // if can drive and in a new state
       changeDriveState(robotDriveState, lastDriveState);
     }
 
     // if speed has changed send speed change to esp2
     if (driveSpeed != lastDriveSpeed) {
-        MotorSerial.print('V');
-        MotorSerial.println(driveSpeed);
+        setSpeed(driveSpeed);
+        //MotorSerial.print('V');
+        //MotorSerial.println(driveSpeed);
         lastDriveSpeed = driveSpeed;
     }
     lastSensorTime = currentTime; // Reset the timer
