@@ -28,6 +28,11 @@ function Hardwareteam() {
             <li>Battery x1</li>
             <li>GPS Module x1</li>
             <li>Wires & Connectors</li>
+            <li>Wheels x4</li>
+            <li>U Joint & Drive Shaft x4</li>
+            <li>Wheels x4</li>
+            <li>Bearings x4</li>
+            <li>Shock Absorbers x4</li>
           </ul>
         </div>
       </section>
@@ -39,7 +44,7 @@ function Hardwareteam() {
           <h3>Circuit Design</h3>
           <img
             className="HardwareImg"
-            src={`${import.meta.env.BASE_URL}WiringDiagram2.jpeg`}
+            src={`${import.meta.env.BASE_URL}Wiring3.png`}
           />
         </div>
       </section>
