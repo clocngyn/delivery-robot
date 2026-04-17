@@ -31,6 +31,7 @@ function initWebSocket() {
 function onOpen(event) {
     console.log("Websocket opened!")
     initControls();
+    initSensorToggle();
 }
 
 function onClose(event) {
@@ -52,12 +53,12 @@ function onMessage(message) {
     }
 
     // set our telemetry elements
-    document.getElementById('rssiVal').innerText        = data.wifi;
-    document.getElementById('satVal').innerText         = data.sats;
-    document.getElementById('statusValF').innerText     = data.safe ? "SAFE"    : "BLOCKED";
-    document.getElementById('statusValF').style.color   = data.safe ? "green"   : "red";
-    document.getElementById('statusValB').innerText     = data.safe ? "SAFE"    : "BLOCKED";
-    document.getElementById('statusValB').style.color   = data.safe ? "green"   : "red";
+    document.getElementById("rssiVal").innerText        = data.wifi;
+    document.getElementById("satVal").innerText         = data.sats;
+    document.getElementById("statusValF").textContent   = data.safe ? "SAFE"    : "BLOCKED";
+    document.getElementById("statusValF").style.color   = data.safe ? "green"   : "red";
+    document.getElementById("statusValB").textContent   = data.safe ? "SAFE"    : "BLOCKED";
+    document.getElementById("statusValB").style.color   = data.safe ? "green"   : "red";
     
     console.log(data.status);
 }
@@ -102,19 +103,19 @@ function initMap() {
 function initSensorToggle() {
     SensorsOn = true;
 
-    const overrideButton = document.getElementById(overrideButton);
+    const overrideButton = document.getElementById("overrideButton");
                                 // flip sensors and send state
     const pressButton = () => {
         SensorsOn = !SensorsOn; 
         if (SensorsOn) {
             overrideButton.classList.remove('active');
-            websocket.send('O'); // big O = safety on
+            overrideButton.textContent = "SAFETY ON";
+            websocket.send('O'); // send O = safety
         } else {
             overrideButton.classList.add('active');
-            websocket.send('o');
+            overrideButton.textContent = "SAFETY OFF";
+            websocket.send('X');    // send X = safety off
         }
-        websocket.send(SensorsOn); // websocket.send() sends whats in the parenthesis
     }
     overrideButton.ontouchstart = pressButton;
-    
 }

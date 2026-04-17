@@ -74,11 +74,11 @@
     font-weight: bold;
     box-shadow: 0 4px #255726;
     transition: 0.2s;
-    transform: translateY(4px);           
+    transform: translateY(0px);           
 }
 
 .safetyToggle.active {
     background-color: #a73129; 
     box-shadow: 0 4px #a73129;
-    transform: translateY(0px);
+    transform: translateY(4px);
 }
