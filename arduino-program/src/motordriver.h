@@ -5,14 +5,14 @@
 #include <Arduino.h>
 
 //  define what pins were using for what 
-//  motordriver 1 controls both right wheels
+//  motordriver 1 controls both left wheels
 const int motor1A_in1 = 18;
 const int motor1A_in2 = 19;
 
 const int motor1B_in1 = 21;
 const int motor1B_in2 = 22;
 
-// motor 2 controls both left wheels
+// motor 2 controls both right wheels
 const int motor2A_in1 = 26;
 const int motor2A_in2 = 27;
 
