@@ -43,17 +43,24 @@ void sense() {
   Serial.print("    left: ");
   Serial.println(lastSense.left);
   */
-
+  //front
   if (lastSense.front < cautionDistance && lastSense.front > 0.00) {
-    canDrive = false;
+    canDriveF = false;
   } else {
-    canDrive = true;
+    canDriveF = true;
+  }
+  // back
+  if (lastSense.back < cautionDistance && lastSense.back > 0.00) {
+    canDriveB = false;
+  } else {
+    canDriveB = true;
   }
 
+  // sides
   if (lastSense.right < 30 || lastSense.left < 30) {
     driveSpeed = 125;
   } else {
-    driveSpeed = 255;
+    driveSpeed = 250;
   }
 }
 
