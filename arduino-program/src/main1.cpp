@@ -8,7 +8,7 @@
 #define GPSSerial   Serial2
 
 // define variables from robot.h
-int     driveSpeed          = 250;
+int     driveSpeed          = 255;
 char    robotDriveState     = 'S';
 String  testString          = "";
 bool    canDriveF           = true;
@@ -91,11 +91,15 @@ void loop() {
 
     // forces the next input to be stop if the car is blocked
     if (safetyMode) {
-      if (InputtedState == 'F' && !canDriveF) InputtedState = 'S';
-      else if (InputtedState == 'B' && !canDriveB) InputtedState = 'S';
+      if (InputtedState == 'F' && !canDriveF) {
+        Serial.println("Forward input blocked");
+        InputtedState = 'S';
+      } else if (InputtedState == 'B' && !canDriveB) {
+        Serial.println("Backward input blocked");
+        InputtedState = 'S';
+      }
     }
 
-    
     if (InputtedState != lastDriveState) {     
       changeDriveState(InputtedState, lastDriveState);
     }
