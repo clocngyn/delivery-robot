@@ -55,10 +55,10 @@ function onMessage(message) {
     // set our telemetry elements
     document.getElementById("rssiVal").innerText        = data.wifi;
     document.getElementById("satVal").innerText         = data.sats;
-    document.getElementById("statusValF").textContent   = data.safe ? "SAFE"    : "BLOCKED";
-    document.getElementById("statusValF").style.color   = data.safe ? "green"   : "red";
-    document.getElementById("statusValB").textContent   = data.safe ? "SAFE"    : "BLOCKED";
-    document.getElementById("statusValB").style.color   = data.safe ? "green"   : "red";
+    document.getElementById("statusValF").textContent   = data.safeF ? "SAFE"    : "BLOCKED";
+    document.getElementById("statusValF").style.color   = data.safeF ? "green"   : "red";
+    document.getElementById("statusValB").textContent   = data.safeB ? "SAFE"    : "BLOCKED";
+    document.getElementById("statusValB").style.color   = data.safeB ? "green"   : "red";
     
     console.log(data.status);
 }
