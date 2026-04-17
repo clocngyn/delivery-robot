@@ -40,7 +40,7 @@ void setup() {
   Serial.begin(115200);                           // esp32 can read at 115200 bps
   // (rx, tx)
   //MotorSerial.begin(9600, SERIAL_8N1, 25, 26);  // opens the 2nd serial port to speak to 2nd esp
-  GPSSerial.begin(115200, SERIAL_8N1, 16, 17);      // gps needs another serial
+  GPSSerial.begin(9600, SERIAL_8N1, 16, 17);      // gps needs another serial
 
   // starts wifi
   WiFi.begin("iPhone", "tset2sdkt5q4");       // (wifi name, password)

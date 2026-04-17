@@ -24,10 +24,10 @@ void sense() {
   
   // if we get an actual reading, do an update
   if (dist > 0) {
-      if (sensorId == 0) lastSense.front = dist;
-      if (sensorId == 1) lastSense.back  = dist;
-      if (sensorId == 2) lastSense.left  = dist;
-      if (sensorId == 3) lastSense.right = dist;
+      if (sensorId == 0) lastSense.front  = dist;
+      if (sensorId == 1) lastSense.right  = dist;
+      if (sensorId == 2) lastSense.back   = dist;
+      if (sensorId == 3) lastSense.left   = dist;
   }
 
   // increment index 

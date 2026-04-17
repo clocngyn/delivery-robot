@@ -40,40 +40,42 @@ void drive(char direction) {
         analogWrite(motor1B_in1, driveSpeed);
         analogWrite(motor1B_in2, 0);
         
-        analogWrite(motor2A_in1, driveSpeed);
-        analogWrite(motor2A_in2, 0);
-        analogWrite(motor2B_in1, driveSpeed);
-        analogWrite(motor2B_in2, 0);
+        analogWrite(motor2A_in1, 0);
+        analogWrite(motor2A_in2, driveSpeed);
+        analogWrite(motor2B_in1, 0);
+        analogWrite(motor2B_in2, driveSpeed);
     } else if (direction == CMD_BACKWARD) {
         analogWrite(motor1A_in1, 0);
         analogWrite(motor1A_in2, driveSpeed);
         analogWrite(motor1B_in1, 0);
         analogWrite(motor1B_in2, driveSpeed);
 
-        analogWrite(motor2A_in1, 0);
-        analogWrite(motor2A_in2, driveSpeed);
-        analogWrite(motor2B_in1, 0);
-        analogWrite(motor2B_in2, driveSpeed);
+        analogWrite(motor2A_in1, driveSpeed);
+        analogWrite(motor2A_in2, 0);
+        analogWrite(motor2B_in1, driveSpeed);
+        analogWrite(motor2B_in2, 0);
+        
     } else if (direction == CMD_LEFT) {         // turns are always constant speed
-        analogWrite(motor1A_in1, 255);
-        analogWrite(motor1A_in2, 0);
-        analogWrite(motor1B_in1, 255);
-        analogWrite(motor1B_in2, 0);
+        analogWrite(motor1A_in1, 0);
+        analogWrite(motor1A_in2, 255);
+        analogWrite(motor1B_in1, 0);
+        analogWrite(motor1B_in2, 255);
 
         analogWrite(motor2A_in1, 0);
         analogWrite(motor2A_in2, 255);
         analogWrite(motor2B_in1, 0);
         analogWrite(motor2B_in2, 255);
     } else if (direction == CMD_RIGHT) {
-        analogWrite(motor1A_in1, 0);
-        analogWrite(motor1A_in2, 255);
-        analogWrite(motor1B_in1, 0);
-        analogWrite(motor1B_in2, 255);
+        analogWrite(motor1A_in1, 255);
+        analogWrite(motor1A_in2, 0);
+        analogWrite(motor1B_in1, 255);
+        analogWrite(motor1B_in2, 0);
 
         analogWrite(motor2A_in1, 255);
         analogWrite(motor2A_in2, 0);
         analogWrite(motor2B_in1, 255);
         analogWrite(motor2B_in2, 0);
+        
     }
 }
 
