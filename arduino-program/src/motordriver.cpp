@@ -18,12 +18,15 @@ void initMotorDriver() {
     pinMode(motor2B_in2, OUTPUT);
     
     //pinMode(stbyPin, OUTPUT);
-    //digitalWrite(stbyPin, HIGH); //keeps the motor active
+    //analogWrite(stbyPin, HIGH); //keeps the motor active
 }
 
 // drive function mainly used to receive and interpret the websocket signals
 void drive(char direction) {
+    Serial.print("Drive function called: ");
     Serial.println(direction);
+    Serial.print("Speed: ");
+    Serial.println(driveSpeed);
     if (direction == 'S') { // guard 
         stop();
         return;
@@ -31,55 +34,60 @@ void drive(char direction) {
 
     // sets pins based on the received command
     if (direction == CMD_FORWARD) {
+        //Serial.println("inside block");
         analogWrite(motor1A_in1, driveSpeed);
-        digitalWrite(motor1A_in2, LOW);
+        analogWrite(motor1A_in2, 0);
         analogWrite(motor1B_in1, driveSpeed);
-        digitalWrite(motor1B_in2, LOW);
+        analogWrite(motor1B_in2, 0);
+        
         analogWrite(motor2A_in1, driveSpeed);
-        digitalWrite(motor2A_in2, LOW);
+        analogWrite(motor2A_in2, 0);
         analogWrite(motor2B_in1, driveSpeed);
-        digitalWrite(motor2B_in2, LOW);
+        analogWrite(motor2B_in2, 0);
     } else if (direction == CMD_BACKWARD) {
-        digitalWrite(motor1A_in1, LOW);
+        analogWrite(motor1A_in1, 0);
         analogWrite(motor1A_in2, driveSpeed);
-        digitalWrite(motor1B_in1, LOW);
+        analogWrite(motor1B_in1, 0);
         analogWrite(motor1B_in2, driveSpeed);
-        digitalWrite(motor2A_in1, LOW);
+
+        analogWrite(motor2A_in1, 0);
         analogWrite(motor2A_in2, driveSpeed);
-        digitalWrite(motor2B_in1, LOW);
+        analogWrite(motor2B_in1, 0);
         analogWrite(motor2B_in2, driveSpeed);
     } else if (direction == CMD_LEFT) {         // turns are always constant speed
         analogWrite(motor1A_in1, 255);
-        digitalWrite(motor1A_in2, LOW);
-        digitalWrite(motor1B_in1, LOW);
-        analogWrite(motor1B_in2, 255);
-        analogWrite(motor2A_in1, 255);
-        digitalWrite(motor2A_in2, LOW);
-        digitalWrite(motor2B_in1, LOW);
+        analogWrite(motor1A_in2, 0);
+        analogWrite(motor1B_in1, 255);
+        analogWrite(motor1B_in2, 0);
+
+        analogWrite(motor2A_in1, 0);
+        analogWrite(motor2A_in2, 255);
+        analogWrite(motor2B_in1, 0);
         analogWrite(motor2B_in2, 255);
     } else if (direction == CMD_RIGHT) {
-        digitalWrite(motor1A_in1, LOW);
+        analogWrite(motor1A_in1, 0);
         analogWrite(motor1A_in2, 255);
-        analogWrite(motor1B_in1, 255);
-        digitalWrite(motor1B_in2, LOW);
-        digitalWrite(motor2A_in1, LOW);
-        analogWrite(motor2A_in2, 255);
+        analogWrite(motor1B_in1, 0);
+        analogWrite(motor1B_in2, 255);
+
+        analogWrite(motor2A_in1, 255);
+        analogWrite(motor2A_in2, 0);
         analogWrite(motor2B_in1, 255);
-        digitalWrite(motor2B_in2, LOW);
+        analogWrite(motor2B_in2, 0);
     }
 }
 
 // stop function
 void stop() {
     //testString = "STOP";
-    digitalWrite(motor1A_in1, LOW);
-    digitalWrite(motor1A_in2, LOW);
-    digitalWrite(motor1B_in1, LOW);
-    digitalWrite(motor1B_in2, LOW);
-    digitalWrite(motor2A_in1, LOW);
-    digitalWrite(motor2A_in2, LOW);
-    digitalWrite(motor2B_in1, LOW);
-    digitalWrite(motor2B_in2, LOW);
+    analogWrite(motor1A_in1, 0);
+    analogWrite(motor1A_in2, 0);
+    analogWrite(motor1B_in1, 0);
+    analogWrite(motor1B_in2, 0);
+    analogWrite(motor2A_in1, 0);
+    analogWrite(motor2A_in2, 0);
+    analogWrite(motor2B_in1, 0);
+    analogWrite(motor2B_in2, 0);
 }
 
 // changes the power output of the motors

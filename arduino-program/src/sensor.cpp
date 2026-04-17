@@ -58,9 +58,14 @@ void sense() {
 
   // sides
   if (lastSense.right < 30 || lastSense.left < 30) {
-    driveSpeed = 125;
+    if (safetyMode) {
+      driveSpeed = 125;
+    } else {
+      driveSpeed = 255;
+    }
+    
   } else {
-    driveSpeed = 250;
+    driveSpeed = 255;
   }
 }
 
