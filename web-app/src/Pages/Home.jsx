@@ -11,7 +11,7 @@ function Home() {
         </div>
         <img
           className = "HomeRobotImg"
-          src = {`${import.meta.env.BASE_URL}SideView.jpeg`}
+          src = {`${import.meta.env.BASE_URL}sideview.jpg`}
         />
       </section>
 
@@ -61,11 +61,11 @@ function Home() {
             <figcaption>Body Test Fitting</figcaption>
           </figure>
           <figure>
-            <img src = {`${import.meta.env.BASE_URL}SuspensionTest.png`}/>
+            <img src = {`${import.meta.env.BASE_URL}suspension.jpg`}/>
             <figcaption>Suspension Testing</figcaption>
           </figure>
           <figure>
-            <img src = {`${import.meta.env.BASE_URL}OpenLid.jpeg`} />
+            <img src = {`${import.meta.env.BASE_URL}topview.jpg`} />
             <figcaption>Top View</figcaption>
           </figure>
         </div>

@@ -44,7 +44,7 @@ function Hardwareteam() {
           <h3>Circuit Design</h3>
           <img
             className="HardwareImg"
-            src={`${import.meta.env.BASE_URL}Wiring3.png`}
+            src={`${import.meta.env.BASE_URL}WiringDiagram1.png`}
           />
         </div>
       </section>

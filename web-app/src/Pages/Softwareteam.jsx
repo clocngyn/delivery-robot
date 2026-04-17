@@ -24,7 +24,7 @@ function SoftwareTeam() {
             <h3>Use Case Diagram </h3>
             <img
               className="SoftwareImg"
-              src={`${import.meta.env.BASE_URL}WebsiteUML.png`}
+              src={`${import.meta.env.BASE_URL}WebsiteUse.png`}
               alt="Software diagram 1"
             />
           </div>
@@ -34,7 +34,7 @@ function SoftwareTeam() {
             <h3>UML Diagram</h3>
             <img
               className="SoftwareImg"
-              src={`${import.meta.env.BASE_URL}UMLDiagram.jpeg`}
+              src={`${import.meta.env.BASE_URL}UML.jpeg`}
               alt="Software diagram 2"
             />
           </div>
