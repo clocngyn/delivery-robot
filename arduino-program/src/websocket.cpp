@@ -27,7 +27,7 @@ void onWebSocketEvent(AsyncWebSocket *server, AsyncWebSocketClient *client, AwsE
 
 
 
-    if (len == 1) {      // char case, used for quick processing
+    if (len == 1) {      // this case means the received data has length 1, only a char was sent
       char command = toupper((char)data[0]); //toupper() just in case
 
       // if command is one of the proper chars, change drive state
@@ -35,14 +35,17 @@ void onWebSocketEvent(AsyncWebSocket *server, AsyncWebSocketClient *client, AwsE
         robotDriveState = command; 
       }
 
-
+      if (command == 'O') {
+        Serial.println("safety turned on");
+        safetyMode = true;
+      } else if (command == 'X') {
+        Serial.println("safety turned off");
+        safetyMode = false;
+      }
 
     } else {
-      //
+      // this section could process longer info
     }
-
-    
-
     
     //Serial.println("raw data: "); test
     //Serial.print(command);
