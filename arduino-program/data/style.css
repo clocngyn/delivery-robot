@@ -56,6 +56,29 @@
 .telemetryBar {
     text-align: center;
     padding: 10px;
-    background-color: #222;
+    background-color: #8b8b8b;
     color: white;
+}
+.safetyButton {
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    margin-top: 20px;
+}
+
+.safetyToggle {
+    background-color: #2f6f31; 
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 25px;
+    font-weight: bold;
+    box-shadow: 0 4px #255726;
+    transition: 0.2s;
+    transform: translateY(0px);           
+}
+
+.safetyToggle.active {
+    background-color: #a73129; 
+    box-shadow: 0 4px #a73129;
+    transform: translateY(4px);
 }

@@ -31,6 +31,7 @@ function initWebSocket() {
 function onOpen(event) {
     console.log("Websocket opened!")
     initControls();
+    initSensorToggle();
 }
 
 function onClose(event) {
@@ -52,10 +53,12 @@ function onMessage(message) {
     }
 
     // set our telemetry elements
-    document.getElementById('rssiVal').innerText       = data.wifi;
-    document.getElementById('satVal').innerText        = data.sats;
-    document.getElementById('statusVal').innerText     = data.safe ? "ACTIVE" : "BLOCKED";
-    document.getElementById('statusVal').style.color   = data.safe ? "green" : "red";
+    document.getElementById("rssiVal").innerText        = data.wifi;
+    document.getElementById("satVal").innerText         = data.sats;
+    document.getElementById("statusValF").textContent   = data.safeF ? "SAFE"    : "BLOCKED";
+    document.getElementById("statusValF").style.color   = data.safeF ? "green"   : "red";
+    document.getElementById("statusValB").textContent   = data.safeB ? "SAFE"    : "BLOCKED";
+    document.getElementById("statusValB").style.color   = data.safeB ? "green"   : "red";
     
     console.log(data.status);
 }
@@ -95,4 +98,24 @@ function initMap() {
 
     // 3. Create the robot marker (start at 0,0)
     robotMarker = L.marker([0, 0]).addTo(map);
+}
+
+function initSensorToggle() {
+    SensorsOn = true;
+
+    const overrideButton = document.getElementById("overrideButton");
+                                // flip sensors and send state
+    const pressButton = () => {
+        SensorsOn = !SensorsOn; 
+        if (SensorsOn) {
+            overrideButton.classList.remove('active');
+            overrideButton.textContent = "SAFETY ON";
+            websocket.send('O'); // send O = safety
+        } else {
+            overrideButton.classList.add('active');
+            overrideButton.textContent = "SAFETY OFF";
+            websocket.send('X');    // send X = safety off
+        }
+    }
+    overrideButton.ontouchstart = pressButton;
 }
