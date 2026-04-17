@@ -25,8 +25,12 @@ extern AsyncWebSocket webSocket;
 
 extern char     robotDriveState;    // ex. 'F', 'B', 'S', these will be modified by websocket.cpp
                                     // and main will act based on the current state
-extern bool     canDrive;    
+extern bool     canDriveF;    
+extern bool     canDriveB;
 extern int      driveSpeed;
+
+extern bool     safetyMode;         // determines if sensors can control the driving
+                                    // (overrides the sensor)
    
 
 extern String testString;
