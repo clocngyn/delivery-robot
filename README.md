@@ -5,6 +5,9 @@ Arduino-program features a microcontroller program that provides an app interfac
 
 Web-app is a the jsx source code for our class website.
 
+User Manual - The robot is coded to have a specific wifi that is searches for and connects to before it hosts its websocket, the wifi used can be changed. After it is hosted, a client on the same wifi must connect to deliveryrobot.local to reach the interface. From there the user can access the drive controls and telemetry.
+
+
 
 <img width="1571" height="810" alt="image" src="https://github.com/user-attachments/assets/5704aa3c-f65f-458e-a92a-c3ab89f1f062" />
 
