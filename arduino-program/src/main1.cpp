@@ -5,15 +5,15 @@
 #include <ESPmDNS.h> // used to name the ip
 #include <TinyGPS++.h>
 
-#define MotorSerial Serial1
 #define GPSSerial   Serial2
 
 // define variables from robot.h
-int     driveSpeed          = 255;
+int     driveSpeed          = 250;
 char    robotDriveState     = 'S';
 String  testString          = "";
 bool    canDriveF           = true;
 bool    canDriveB           = true;
+bool    safetyMode          = true;
 
 TinyGPSPlus GPS;
 
@@ -28,7 +28,6 @@ const int sensorInterval = 60; // 60ms between thoughts
 // helper to send change and send all drive state references
 void changeDriveState(char robotDriveState, char &lastDriveState) {
   //Serial.println(robotDriveState);        // just for confirmation on esp1 serial monitor
-  //MotorSerial.print(robotDriveState);         // printing to serial 2 sends the actual char to esp2
   drive(robotDriveState);
   lastDriveState = robotDriveState;       //update state
 }
@@ -87,16 +86,18 @@ void loop() {
 
     static char lastDriveState = 'S'; // records the last state
     // changes drive direction
-    if (!canDriveF && robotDriveState == 'F') {   // if cant drive and going forward, stop
-      if (lastDriveState != 'S') {                // force stop if not stopped
-        changeDriveState('S', lastDriveState);
-      }
-    } else if (!canDriveB && robotDriveState == 'B') {  // same for backwards
-      if (lastDriveState != 'S') { 
-        changeDriveState('S', lastDriveState);
-      }
-    } else if (robotDriveState != lastDriveState) {     // if can drive and in a new state
-      changeDriveState(robotDriveState, lastDriveState);
+    
+    char InputtedState = robotDriveState;
+
+    // forces the next input to be stop if the car is blocked
+    if (safetyMode) {
+      if (InputtedState == 'F' && !canDriveF) InputtedState = 'S';
+      else if (InputtedState == 'B' && !canDriveB) InputtedState = 'S';
+    }
+
+    
+    if (InputtedState != lastDriveState) {     
+      changeDriveState(InputtedState, lastDriveState);
     }
 
     // if speed has changed send speed change to esp2
@@ -127,8 +128,7 @@ void loop() {
     lastGPSDebugTime = currentTime;
   }
   
-  //Serial.println(testString);
-  delay(20); 
+  //delay(20); 
 }
 
 
@@ -150,7 +150,7 @@ void sendTelemetry() {
 
 
   String jsonOutput;
-  serializeJson(doc, jsonOutput); // turns doc into json for sending to websocket
+  serializeJson(doc, jsonOutput); // minimizes the jsondoc to send to websocket
   
   // send to websocket, ESPAsyncWebServer function, triggers onMessage in websocket
   webSocket.textAll(jsonOutput); 
